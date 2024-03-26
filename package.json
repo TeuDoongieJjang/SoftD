@@ -5,9 +5,9 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "front": "npm run dev --prefix frontend",
-    "back": "nodemon backend/server.js",
-    "dev": "concurrently \"npm run front\" \"npm run back\""
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js",
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "keywords": [],
   "author": "",
