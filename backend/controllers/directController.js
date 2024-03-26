@@ -1,5 +1,4 @@
 import Student from '../models/studentModel.js'
-import bcrypt from 'bcryptjs'
 import {format} from 'date-fns'
 import StudentTime from '../models/studentTimeModel.js'
 
