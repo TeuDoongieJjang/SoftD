@@ -6,7 +6,7 @@ const router = express.Router()
 
 router.use(cors({
     credentials: true,
-    origin: 'http://localhost:3000'
+    origin: 'https://student-monitoring.rtu.com'
 }))
 
 router.get('/:id', home)
