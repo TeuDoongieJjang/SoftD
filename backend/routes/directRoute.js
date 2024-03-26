@@ -6,7 +6,7 @@ const router = express.Router()
 
 router.use(cors({
     credentials: true,
-    origin: 'https://student-monitoring.rtu.com'
+    origin: 'https://softd.onrender.com'
 }))
 
 router.get('/:id', home)
