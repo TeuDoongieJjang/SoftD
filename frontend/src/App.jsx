@@ -10,7 +10,7 @@ import { Toaster } from 'react-hot-toast'
 import axios from 'axios'
 import { useAuthContext } from './context/AuthContext.jsx'
 
-axios.defaults.baseURL = 'http://localhost:2700'
+axios.defaults.baseURL = 'https://softd.onrender.com'
 axios.defaults.withCredentials = true
 
 function App() {

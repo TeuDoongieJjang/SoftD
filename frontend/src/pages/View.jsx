@@ -21,7 +21,6 @@ const View = () => {
     const view = async () => {
         try {
             const res = await axios.get(`/view/${id}`)
-            console.log(res.data)
             if(res.data && res.data.error){
                 toast.error(res.data.error)
             } else {

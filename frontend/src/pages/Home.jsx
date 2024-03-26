@@ -51,8 +51,6 @@ const Home = () => {
 
   }, [authUser.id])
 
-  console.log(authUser.data)
-
   return (
 
        <div className="flex flex-col min-h-screen">
