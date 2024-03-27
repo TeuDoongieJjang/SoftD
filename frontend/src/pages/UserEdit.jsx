@@ -107,15 +107,15 @@ const UserEdit = () => {
   }
 
   return (
-    <div className="bg-black flex flex-col min-h-screen">
+    <div className="bg-gray-800 flex flex-col min-h-screen">
       {loading ? <div></div> : <>
         <header className="bg-blue-500 rounded-b-xl text-white p-4 sticky top-0 z-50">
           <div>
             <div className='text-center'><span className="text-xl text-center font-bold">{name}</span></div>
             <div className="flex justify-between">
-              <button className="btn btn-primary bg-yellow-500  hover:bg-blue-500  hover:text-white" onClick={logout}>LOG OUT</button>
-              <button className="btn btn-primary bg-yellow-500  hover:bg-blue-500  hover:text-white" onClick={() => { navigate(`/${authUser.id}`) }}>HOME</button>
-              <button className="btn btn-primary bg-yellow-500  hover:bg-blue-500  hover:text-white" onClick={handleSubmit}>SAVE</button>
+              <button className="btn btn-primary text-black bg-yellow-500  hover:bg-blue-500  hover:text-white" onClick={logout}>LOG OUT</button>
+              <button className="btn btn-primary text-black bg-yellow-500  hover:bg-blue-500  hover:text-white" onClick={() => { navigate(`/${authUser.id}`) }}>HOME</button>
+              <button className="btn btn-primary text-black bg-yellow-500  hover:bg-blue-500  hover:text-white" onClick={handleSubmit}>SAVE</button>
             </div>
           </div>
         </header>
@@ -124,18 +124,18 @@ const UserEdit = () => {
             <div className="w-full max-w-sm mx-auto bg-white shadow-md rounded-2xl pr-8 pl-8 pt-4 pb-4">
               <h1 className="text-3xl font-bold text-black text-center">EDIT </h1>
               <div className="mb-4">
-                  <label htmlFor="fullName" className="block text-gray-700 text-sm font-bold mb-2">FULL NAME</label>
+                  <label htmlFor="fullName" className="block text-gray-500 text-sm font-bold mb-2">FULL NAME</label>
                   <input
                       type="text"
                       id="fullName"
                       name="fullName"
                       value={fullName.toUpperCase()}
                       onChange={(e) => {setFullname(e.target.value.toUpperCase())}}
-                      className="bg-black input input-bordered w-full max-w-xs"
+                      className="bg-gray-800 text-gray-500 input input-bordered w-full max-w-xs"
                   />
               </div>
               <div className="mb-4">
-                  <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                  <label htmlFor="email" className="block text-gray-500 text-sm font-bold mb-2">Email</label>
                   <input
                       type="email"
                       id="email"
@@ -143,14 +143,14 @@ const UserEdit = () => {
                       name="email"
                       value={email}
                       onChange={(e) => {setEmail(e.target.value)}}
-                      className="bg-black input input-bordered w-full max-w-xs"
+                      className="bg-gray-800 text-gray-500 input input-bordered w-full max-w-xs"
                   />
               </div>
               <div className="mb-4">
-                  <label htmlFor="password" className="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                  <label htmlFor="password" className="block text-gray-500 text-sm font-bold mb-2">Password</label>
                   <input type={isPasswordVisible ? "text" : "password"}
                       placeholder="Password"
-                      className="bg-black input input-bordered w-full max-w-xs"
+                      className="bg-gray-800 text-gray-500 input input-bordered w-full max-w-xs"
                       id="password"
                       name="password"
                       value={password}
@@ -168,13 +168,13 @@ const UserEdit = () => {
               </div>
               <div className="mb-4 flex-row flex justify-between">
                     <div >
-                        <label htmlFor="sport" className="flex text-gray-700 text-sm font-bold mb-2">SPORT</label>
+                        <label htmlFor="sport" className="flex text-gray-500 text-sm font-bold mb-2">SPORT</label>
                         <select
                             id="sport"
                             name="sport"
                             value={sport}
                             onChange={(e) => {setSport(e.target.value)}}
-                            className="bg-black input input-bordered w-full max-w-xs"
+                            className="bg-gray-800 text-gray-500 input input-bordered w-full max-w-xs"
                         >
                             <option value="">SELECT</option>
                             <option value="BASKETBALL">BASKETBALL</option>
@@ -183,13 +183,13 @@ const UserEdit = () => {
                         </select>
                     </div>
                     <div>
-                        <label htmlFor="level" className="flex text-gray-700 text-sm font-bold mb-2">LEVEL</label>
+                        <label htmlFor="level" className="flex text-gray-500 text-sm font-bold mb-2">LEVEL</label>
                         <select
                             id="level"
                             name="level"
                             value={level}
                             onChange={(e) => {setLevel(e.target.value)}}
-                            className="bg-black input input-bordered w-full max-w-xs"
+                            className="bg-gray-800 text-gray-500 input input-bordered w-full max-w-xs"
                         >
                             <option value="">SELECT</option>
                             <option value="FRESHMEN">FRESHMEN</option>
@@ -201,13 +201,13 @@ const UserEdit = () => {
                 </div>
                 <div className="mb-4 flex-row flex justify-between">
                     <div>
-                        <label htmlFor="sex" className="block text-gray-700 text-sm font-bold mb-2">SEX</label>
+                        <label htmlFor="sex" className="block text-gray-500 text-sm font-bold mb-2">SEX</label>
                         <select
                             id="sex"
                             name="sex"
                             value={sex}
                             onChange={(e) => {setSex(e.target.value)}}
-                            className="bg-black input input-bordered w-full max-w-xs"
+                            className="bg-gray-800 text-gray-500 input input-bordered w-full max-w-xs"
                         >
                             <option value="">SELECT</option>
                             <option value="MALE">MALE</option>
@@ -216,14 +216,14 @@ const UserEdit = () => {
                         </select>
                     </div>
                     <div>
-                        <label htmlFor="birthdate" className="block text-gray-700 text-sm font-bold mb-2">BIRTHDATE</label>
+                        <label htmlFor="birthdate" className="block text-gray-500 text-sm font-bold mb-2">BIRTHDATE</label>
                         <input
                             type="date"
                             id="birthdate"
                             name="birthdate"
                             value={birthdate}
                             onChange={(e) => {setBirthdate(e.target.value)}}
-                            className="bg-black input input-bordered w-full max-w-xs"
+                            className="bg-gray-800 text-gray-500 input input-bordered w-full max-w-xs"
                         />
                     </div>
                 </div>

@@ -79,14 +79,14 @@ const View = () => {
 
   return (
 
-    <div className="bg-black flex flex-col min-h-screen">
+    <div className="bg-gray-800 flex flex-col min-h-screen">
       {loading ? <div></div> : <>
         <header className="bg-blue-500 rounded-b-xl text-white pl-4 pr-4 pt-3 pb-3 sticky top-0 z-50">
           <div>
             <div className='text-center'><span className="text-xl text-center font-bold">{name}</span></div>
             <div className="flex justify-between">
-              <button className="btn btn-primary bg-yellow-500  hover:bg-blue-500  hover:text-white" onClick={logout}>LOG OUT</button>
-              <button className="btn btn-primary bg-yellow-500  hover:bg-blue-500  hover:text-white" onClick={() => { navigate(`/${authUser.id}`) }}>HOME</button>
+              <button className="btn btn-primary text-black bg-yellow-500  hover:bg-blue-500  hover:text-white" onClick={logout}>LOG OUT</button>
+              <button className="btn btn-primary text-black bg-yellow-500  hover:bg-blue-500  hover:text-white" onClick={() => { navigate(`/${authUser.id}`) }}>HOME</button>
             </div>
           </div>
         </header>

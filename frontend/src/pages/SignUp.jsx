@@ -35,7 +35,7 @@ const SignUpPage = () => {
             <form onSubmit={handleSubmit} className="w-full max-w-sm mx-auto bg-white shadow-md rounded-2xl pr-8 pl-8 pt-4 pb-4">
                 <h1 className="text-3xl pb-3 font-bold text-black text-center">SIGN UP</h1>
                 <div className="mb-4">
-                    <label htmlFor="fullName" className="block text-gray-700 text-sm font-bold mb-2">FULL NAME</label>
+                    <label htmlFor="fullName" className="block text-gray-500 text-sm font-bold mb-2">FULL NAME</label>
                     <input
                         type="text"
                         id="fullName"
@@ -43,11 +43,11 @@ const SignUpPage = () => {
                         name="fullName"
                         value={formData.fullName.toUpperCase()}
                         onChange={handleChange}
-                        className="bg-black input input-bordered w-full max-w-xs"
+                        className="bg-gray-800 text-gray-500 input input-bordered w-full max-w-xs"
                     />
                 </div>
                 <div className="mb-4">
-                    <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                    <label htmlFor="email" className="block text-gray-500 text-sm font-bold mb-2">Email</label>
                     <input
                         type="email"
                         id="email"
@@ -55,14 +55,14 @@ const SignUpPage = () => {
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
-                        className="bg-black input input-bordered w-full max-w-xs"
+                        className="bg-gray-800 text-gray-500 input input-bordered w-full max-w-xs"
                     />
                 </div>
                 <div className="mb-4">
-                    <label htmlFor="password" className="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                    <label htmlFor="password" className="block text-gray-500 text-sm font-bold mb-2">Password</label>
                     <input type={isPasswordVisible ? "text" : "password"}
                         placeholder="Password"
-                        className="bg-black input input-bordered w-full max-w-xs"
+                        className="bg-gray-800 text-gray-500 input input-bordered w-full max-w-xs"
                         id="password"
                         name="password"
                         value={formData.password}
@@ -80,13 +80,13 @@ const SignUpPage = () => {
                 </div>
                 <div className="mb-4 flex-row flex justify-between">
                     <div >
-                        <label htmlFor="sport" className="flex text-gray-700 text-sm font-bold mb-2">SPORT</label>
+                        <label htmlFor="sport" className="flex text-gray-500 text-sm font-bold mb-2">SPORT</label>
                         <select
                             id="sport"
                             name="sport"
                             value={formData.sport}
                             onChange={handleChange}
-                            className="bg-black input input-bordered w-full max-w-xs"
+                            className="bg-gray-800 text-gray-500 input input-bordered w-full max-w-xs"
                         >
                             <option value="">SELECT</option>
                             <option value="BASKETBALL">BASKETBALL</option>
@@ -95,13 +95,13 @@ const SignUpPage = () => {
                         </select>
                     </div>
                     <div>
-                        <label htmlFor="level" className="flex text-gray-700 text-sm font-bold mb-2">LEVEL</label>
+                        <label htmlFor="level" className="flex text-gray-500 text-sm font-bold mb-2">LEVEL</label>
                         <select
                             id="level"
                             name="level"
                             value={formData.level}
                             onChange={handleChange}
-                            className="bg-black input input-bordered w-full max-w-xs"
+                            className="bg-gray-800 text-gray-500 input input-bordered w-full max-w-xs"
                         >
                             <option value="">SELECT</option>
                             <option value="FRESHMEN">FRESHMEN</option>
@@ -113,13 +113,13 @@ const SignUpPage = () => {
                 </div>
                 <div className="mb-4 flex-row flex justify-between">
                     <div>
-                        <label htmlFor="sex" className="block text-gray-700 text-sm font-bold mb-2">SEX</label>
+                        <label htmlFor="sex" className="block text-gray-500 text-sm font-bold mb-2">SEX</label>
                         <select
                             id="sex"
                             name="sex"
                             value={formData.sex}
                             onChange={handleChange}
-                            className="bg-black input input-bordered w-full max-w-xs"
+                            className="bg-gray-800 text-gray-500 input input-bordered w-full max-w-xs"
                         >
                             <option value="">SELECT</option>
                             <option value="MALE">MALE</option>
@@ -128,14 +128,14 @@ const SignUpPage = () => {
                         </select>
                     </div>
                     <div>
-                        <label htmlFor="birthdate" className="block text-gray-700 text-sm font-bold mb-2">BIRTHDATE</label>
+                        <label htmlFor="birthdate" className="block text-gray-500 text-sm font-bold mb-2">BIRTHDATE</label>
                         <input
                             type="date"
                             id="birthdate"
                             name="birthdate"
                             value={formData.birthdate}
                             onChange={handleChange}
-                            className="bg-black input input-bordered w-full max-w-xs"
+                            className="bg-gray-800 text-gray-500 input input-bordered w-full max-w-xs"
                         />
                     </div>
                 </div>

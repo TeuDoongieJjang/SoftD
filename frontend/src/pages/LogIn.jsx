@@ -40,27 +40,27 @@ const LogIn = () => {
                         name="fullName"
                         value={formData.fullName.toUpperCase()}
                         onChange={handleChange}
-                        className="bg-black input input-bordered w-full max-w-xs"
+                        className="bg-gray-800 text-gray-500 input input-bordered w-full max-w-xs"
                     />
                 </div>
                 <div className="mb-4">
                     <label htmlFor="password" className="block text-gray-700 text-sm font-bold mb-2">Password</label>
                     <input type={isPasswordVisible ? "text" : "password"}
                         placeholder="Password"
-                        className="bg-black input input-bordered w-full max-w-xs"
+                        className="bg-gray-800 text-gray-500 input input-bordered w-full max-w-xs"
                         id="password"
                         name="password"
                         value={formData.password}
                         onChange={handleChange}
                     />
-                    <label className="bg-black flex items-center mt-2">
+                    <label className=" flex items-center mt-2">
                         <input
                             type="checkbox"
                             className="mr-2 w-4 h-4"
                             checked={isPasswordVisible}
                             onChange={togglePasswordVisibility}
                         />
-                        <span className="text-sm text-gray-600">Show password</span>
+                        <span className="text-sm text-gray-500">Show password</span>
                     </label>
                 </div>
 
