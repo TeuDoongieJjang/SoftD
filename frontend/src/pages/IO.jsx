@@ -40,6 +40,7 @@ const InOrOut = () => {
       } catch (error) {
         if (error.response && error.response.data && error.response.data.error) {
           toast.error(error.response.data.error)
+          navigate('/login')
         } else {
           toast.error('An error occurred. Please try again.')
         }
@@ -57,7 +58,7 @@ const InOrOut = () => {
       }
     );
 
-  }, [authUser.id])
+  }, [authUser.id, navigate])
 
 
 
