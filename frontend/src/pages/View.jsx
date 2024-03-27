@@ -96,23 +96,23 @@ const View = () => {
               <span className='block mb-2 text-2xl text-center text-black font-bold'>INFORMATION</span>
               <div>
                 <label className='text-black text-md font-bold'>EMAIL :</label>
-                <span className="block mb-2 input input-bordered pt-1 pb-1 text-center text-lg text-white  h-fit"> {email}</span>
+                <span className="bg-gray-800 block mb-2 input input-bordered pt-1 pb-1 text-center text-lg text-white  h-fit"> {email}</span>
               </div>
               <div>
                 <label className='text-black text-md font-bold'>LEVEL :</label>
-                <span className="block mb-2 input input-bordered pt-1 pb-1 text-center text-lg text-white  h-fit"> {level}</span>
+                <span className="bg-gray-800 block mb-2 input input-bordered pt-1 pb-1 text-center text-lg text-white  h-fit"> {level}</span>
               </div>
               <div>
                 <label className='text-black text-md font-bold'>SPORT :</label>
-                <span className="block mb-2 input input-bordered pt-1 pb-1 text-center text-lg text-white  h-fit"> {sport}</span>
+                <span className="bg-gray-800 block mb-2 input input-bordered pt-1 pb-1 text-center text-lg text-white  h-fit"> {sport}</span>
               </div>
               <div>
                 <label className='text-black text-md font-bold'>SEX :</label>
-                <span className="block mb-2 input input-bordered pt-1 pb-1 text-center text-lg text-white  h-fit"> {sex}</span>
+                <span className="bg-gray-800 block mb-2 input input-bordered pt-1 pb-1 text-center text-lg text-white  h-fit"> {sex}</span>
               </div>
               <div>
                 <label className='text-black text-md font-bold'>BIRTHDATE :</label>
-                <span className="block mb-2 input input-bordered pt-1 pb-1 text-center text-lg text-white  h-fit"> {birthdate}</span>
+                <span className="bg-gray-800 block mb-2 input input-bordered pt-1 pb-1 text-center text-lg text-white  h-fit"> {birthdate}</span>
               </div>
             </div>
             <div className="grid grid-cols-1 pt-4 md:grid-cols-2 gap-4">

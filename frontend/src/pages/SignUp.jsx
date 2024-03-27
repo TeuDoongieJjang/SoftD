@@ -43,7 +43,7 @@ const SignUpPage = () => {
                         name="fullName"
                         value={formData.fullName.toUpperCase()}
                         onChange={handleChange}
-                        className="bg-gray-800 text-gray-500 input input-bordered w-full max-w-xs"
+                        className="bg-gray-800 text-white input input-bordered w-full max-w-xs"
                     />
                 </div>
                 <div className="mb-4">
@@ -55,14 +55,14 @@ const SignUpPage = () => {
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
-                        className="bg-gray-800 text-gray-500 input input-bordered w-full max-w-xs"
+                        className="bg-gray-800 text-white input input-bordered w-full max-w-xs"
                     />
                 </div>
                 <div className="mb-4">
                     <label htmlFor="password" className="block text-gray-500 text-sm font-bold mb-2">Password</label>
                     <input type={isPasswordVisible ? "text" : "password"}
                         placeholder="Password"
-                        className="bg-gray-800 text-gray-500 input input-bordered w-full max-w-xs"
+                        className="bg-gray-800 text-white input input-bordered w-full max-w-xs"
                         id="password"
                         name="password"
                         value={formData.password}
@@ -86,7 +86,7 @@ const SignUpPage = () => {
                             name="sport"
                             value={formData.sport}
                             onChange={handleChange}
-                            className="bg-gray-800 text-gray-500 input input-bordered w-full max-w-xs"
+                            className="bg-gray-800 text-white input input-bordered w-full max-w-xs"
                         >
                             <option value="">SELECT</option>
                             <option value="BASKETBALL">BASKETBALL</option>
@@ -101,7 +101,7 @@ const SignUpPage = () => {
                             name="level"
                             value={formData.level}
                             onChange={handleChange}
-                            className="bg-gray-800 text-gray-500 input input-bordered w-full max-w-xs"
+                            className="bg-gray-800 text-white input input-bordered w-full max-w-xs"
                         >
                             <option value="">SELECT</option>
                             <option value="FRESHMEN">FRESHMEN</option>
@@ -119,7 +119,7 @@ const SignUpPage = () => {
                             name="sex"
                             value={formData.sex}
                             onChange={handleChange}
-                            className="bg-gray-800 text-gray-500 input input-bordered w-full max-w-xs"
+                            className="bg-gray-800 text-white input input-bordered w-full max-w-xs"
                         >
                             <option value="">SELECT</option>
                             <option value="MALE">MALE</option>
@@ -135,7 +135,7 @@ const SignUpPage = () => {
                             name="birthdate"
                             value={formData.birthdate}
                             onChange={handleChange}
-                            className="bg-gray-800 text-gray-500 input input-bordered w-full max-w-xs"
+                            className="bg-gray-800 text-white input input-bordered w-full max-w-xs"
                         />
                     </div>
                 </div>
