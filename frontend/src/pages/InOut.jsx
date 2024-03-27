@@ -5,16 +5,17 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { useAuthContext } from '../context/AuthContext.jsx'
 
 const InOut = () => {
-    const { id, action } = useParams() 
-    const navigate = useNavigate()
-    const {authUser} = useAuthContext()
 
-    if(authUser.id !== id) { navigate(`/`) }
+    const { id, action } = useParams()
+    const { authUser } = useAuthContext()
+    const navigate = useNavigate()
+
+    if (authUser.id !== id) { navigate(`/${authUser.id}`) }
 
     useEffect(() => {
         const io = async () => {
             try {
-                const res = await axios.put(`/io/${id}/${action}`) 
+                const res = await axios.put(`/io/${id}/${action}`)
                 if (res.data.error) {
                     toast.error(res.data.error)
                 } else {
@@ -32,16 +33,16 @@ const InOut = () => {
         toast.promise(
             io(),
             {
-              loading: 'Loading data...',
-              success: 'Data loaded successfully',
-              error: 'Failed to load data',
+                loading: 'Loading',
+                success: 'Loaded Successfully',
+                error: 'Loading Failed',
             },
             {
-              duration: 2000,
+                duration: 2000,
             }
-         );
+        );
 
-    }, [id, action, navigate]) 
+    }, [id, action, navigate])
 }
 
 export default InOut

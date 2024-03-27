@@ -4,7 +4,6 @@ import { useLogIn } from '../hooks/UseLogIn'
 
 const LogIn = () => {
 
-
     const { login } = useLogIn()
 
     const [formData, setFormData] = useState({
@@ -29,17 +28,17 @@ const LogIn = () => {
 
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-1">
+        <div className="flex flex-col items-center justify-center min-h-screen bg-blue-500 p-1">
             <form onSubmit={handleSubmit} className="w-full max-w-sm mx-auto bg-white shadow-md rounded-2xl pr-8 pl-8 pt-4 pb-4">
                 <h1 className="text-3xl font-bold text-black text-center">LOG IN</h1>
                 <div className="mb-4">
-                    <label htmlFor="fullName" className="block text-gray-700 text-sm font-bold mb-2">Full Name</label>
+                    <label htmlFor="fullName" className="block text-gray-700 text-sm font-bold mb-2">FULL NAME</label>
                     <input
                         type="text"
                         id="fullName"
-                        placeholder="First Middle Last"
+                        placeholder="LAST, FIRST MIDDLE"
                         name="fullName"
-                        value={formData.fullName}
+                        value={formData.fullName.toUpperCase()}
                         onChange={handleChange}
                         className="input input-bordered w-full max-w-xs"
                     />
@@ -66,11 +65,11 @@ const LogIn = () => {
                 </div>
 
                 <div className="flex items-center justify-between pb-2 pt-2">
-                    <Link to='/signup'><button className="btn btn-outline hover:text-white hover:bg-blue-500">
-                        Sign Up
+                    <Link to='/signup'><button className="btn btn-outline hover:text-black hover:bg-yellow-500">
+                        SIGN UP
                     </button></Link>
-                    <button type='submit' className="btn bg-blue-500 hover:outline hover:bg-white hover:ring-blue-500 hover:text-blue-500 text-white" >
-                        Log In
+                    <button type='submit' className="btn bg-yellow-500 hover:outline hover:bg-white hover:ring-blue-500 hover:text-gray-500 text-black" >
+                        LOG IN
                     </button>
                 </div>
             </form>
