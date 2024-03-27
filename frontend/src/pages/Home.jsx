@@ -57,7 +57,7 @@ const Home = () => {
 
   return (
 
-    <div className="flex flex-col min-h-screen">
+    <div className="bg-black flex flex-col min-h-screen">
       {loading ? <div></div> : <>
         <header className="bg-blue-500 rounded-b-xl text-white pl-4 pr-4 pt-3 pb-3 sticky top-0 z-50">
           <div className='text-center'>

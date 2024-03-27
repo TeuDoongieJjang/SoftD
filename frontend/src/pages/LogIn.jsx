@@ -40,20 +40,20 @@ const LogIn = () => {
                         name="fullName"
                         value={formData.fullName.toUpperCase()}
                         onChange={handleChange}
-                        className="input input-bordered w-full max-w-xs"
+                        className="bg-black input input-bordered w-full max-w-xs"
                     />
                 </div>
                 <div className="mb-4">
                     <label htmlFor="password" className="block text-gray-700 text-sm font-bold mb-2">Password</label>
                     <input type={isPasswordVisible ? "text" : "password"}
                         placeholder="Password"
-                        className="input input-bordered w-full max-w-xs"
+                        className="bg-black input input-bordered w-full max-w-xs"
                         id="password"
                         name="password"
                         value={formData.password}
                         onChange={handleChange}
                     />
-                    <label className="flex items-center mt-2">
+                    <label className="bg-black flex items-center mt-2">
                         <input
                             type="checkbox"
                             className="mr-2 w-4 h-4"
