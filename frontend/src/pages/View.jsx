@@ -29,6 +29,7 @@ const View = () => {
         const res = await axios.get(`/view/${id}`)
         if (!res.data) {
           toast.error(res.data.error)
+          navigate('/login')
           setLoading(false)
         } else {
           if (res.data.studentData) {
@@ -56,9 +57,11 @@ const View = () => {
       } catch (error) {
         if (error.response && error.response.data && error.response.data.error) {
           toast.error(error.response.data.error)
+          navigate('/login')
           setLoading(false)
         } else {
           toast.error('An error occurred. Please try again.')
+          navigate('/login')
         }
       }
     }
@@ -75,7 +78,7 @@ const View = () => {
       }
     );
 
-  }, [id])
+  }, [id, navigate])
 
   return (
 

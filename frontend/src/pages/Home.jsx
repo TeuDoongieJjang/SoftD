@@ -25,6 +25,7 @@ const Home = () => {
         const res = await axios.get(`/${authUser.id}`)
         if (res.data.error) {
           toast.error(res.data.error)
+          navigate('/login')
         }
         setMales(res.data.Male)
         setFemales(res.data.Female)
@@ -32,8 +33,10 @@ const Home = () => {
       } catch (error) {
         if (error.response && error.response.data && error.response.data.error) {
           toast.error(error.response.data.error);
+          navigate('/login')
         } else {
           toast.error('An error occurred. Please try again.');
+          navigate('/login')
         }
       }
     }
@@ -52,7 +55,7 @@ const Home = () => {
 
 
 
-  }, [authUser.id])
+  }, [authUser.id, navigate])
 
 
   return (

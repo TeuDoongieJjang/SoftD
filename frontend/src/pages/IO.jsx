@@ -34,6 +34,7 @@ const InOrOut = () => {
             setLoading(false)
           } else {
             toast.error('User ID not found in response')
+            navigate('/login')
           }
         }
 
@@ -43,6 +44,7 @@ const InOrOut = () => {
           navigate('/login')
         } else {
           toast.error('An error occurred. Please try again.')
+          navigate('/login')
         }
       }
     }
