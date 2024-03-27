@@ -25,6 +25,7 @@ const InOrOut = () => {
         const res = await axios.get(`/io/${authUser.id}`)
         if (res.data && res.data.error) {
           toast.error(res.data.error)
+          navigate('/login')
         } else {
           if (res.data) {
             setName(res.data.name)
