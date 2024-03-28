@@ -19,7 +19,7 @@ function App() {
     <>
       <Toaster position="bottom-center" reverseOrder={true} />
       <Routes>
-        <Route path='/api' element={authUser ? <Navigate to={`/api/io/${authUser.id}`} /> : <Navigate to='/api/login' />} />
+        <Route path='/' element={authUser ? <Navigate to={`/api/io/${authUser.id}`} /> : <Navigate to='/api/login' />} />
         <Route path='/api/:id' element={authUser ? <Home /> : <Navigate to='/api/login' />} />
         <Route path='/api/signup' element={<SignUp />} />
         <Route path='/api/login' element={<LogIn />} />
