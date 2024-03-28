@@ -30,7 +30,7 @@ const LogIn = () => {
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-blue-500 p-1">
             <form onSubmit={handleSubmit} className="w-full max-w-sm mx-auto bg-white shadow-md rounded-2xl pr-8 pl-8 pt-4 pb-4">
-                <h1 className="text-3xl font-bold text-black text-center">LOG IN</h1>
+                <h1 className="text-3xl pt-2 pb-3 font-bold text-black text-center">LOG IN</h1>
                 <div className="mb-4">
                     <label htmlFor="fullName" className="block text-gray-700 text-sm font-bold mb-2">FULL NAME</label>
                     <input

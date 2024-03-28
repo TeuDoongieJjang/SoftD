@@ -72,11 +72,11 @@ const InOrOut = () => {
               <label className='text-black font-bold text-2xl text-center break-words'>{name}</label>
             </div>
             <div className='flex items-center justify-between'>
-              <button disabled={timeStatsIn} className='btn btn-primary bg-yellow-500 text-black hover:bg-blue-500 hover:text-white' onClick={() => { navigate(`/api/io/${id}/in`); }} >
+              <button disabled={timeStatsIn} className='btn btn-primary bg-yellow-500 text-black hover:bg-white hover:text-gray-500' onClick={() => { navigate(`/api/io/${id}/in`); }} >
                 IN
               </button>
-              <button className='btn btn-primary bg-yellow-500 text-black hover:bg-blue-500 hover:text-white' onClick={() => navigate(`/api/${id}`)}>HOME</button>
-              <button disabled={timeStatsOut} className='btn btn-primary bg-yellow-500 text-black hover:bg-blue-500 hover:text-white' onClick={() => { navigate(`/api/io/${id}/out`); }} >
+              <button className='btn btn-primary bg-yellow-500 text-black hover:bg-white hover:text-gray-500' onClick={() => navigate(`/api/${id}`)}>HOME</button>
+              <button disabled={timeStatsOut} className='btn btn-primary bg-yellow-500 text-black hover:bg-white hover:text-gray-500' onClick={() => { navigate(`/api/io/${id}/out`); }} >
                 OUT
               </button>
             </div>

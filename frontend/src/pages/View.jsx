@@ -158,8 +158,8 @@ const View = () => {
             </div>
           </div>
         </main>
-        <footer className="bg-gray-200 text-center rounded-t-xl py-4">
-          <label className='text-3xl text'>BY RTU/CEIT-03-402P</label>
+        <footer className="bg-gray-200 text-center rounded-t-xl py-2">
+          <label className='text-xl text'>BY RTU/CEIT-03-402P</label>
         </footer>
       </>}
     </div>
