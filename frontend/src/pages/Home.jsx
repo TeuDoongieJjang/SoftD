@@ -87,7 +87,7 @@ const Home = () => {
 
             </div>
             {filter ? <div></div> : <>
-              <div className='flex items-center bg-white justify-around pt-2 shadow-md rounded-2xl p-2'>
+              <div className='flex items-center bg-white justify-around pt-2 shadow-md rounded-xl p-2'>
                 <div >
                   <label htmlFor="sport" className="flex text-gray-500 text-sm font-bold mb-2">SPORT</label>
                   <select
@@ -95,7 +95,7 @@ const Home = () => {
                     name="sport"
                     value={sport}
                     onChange={(e) => { setSport(e.target.value) }}
-                    className="bg-gray-800 text-white input input-bordered w-full max-w-xs"
+                    className="bg-gray-800 text-white text-md input input-bordered w-full max-w-xs"
                   >
                     <option value="ALL">ALL</option>
                     <option value="BASKETBALL">BASKETBALL</option>
@@ -110,7 +110,7 @@ const Home = () => {
                     name="level"
                     value={level}
                     onChange={(e) => { setLevel(e.target.value) }}
-                    className="bg-gray-800 text-white input input-bordered w-full max-w-xs"
+                    className="bg-gray-800 text-white text-md input input-bordered w-full max-w-xs"
                   >
                     <option value="ALL">ALL</option>
                     <option value="FRESHMEN">FRESHMEN</option>
@@ -126,7 +126,7 @@ const Home = () => {
                     name="sex"
                     value={sex}
                     onChange={(e) => { setSex(e.target.value) }}
-                    className="bg-gray-800 text-white input input-bordered w-full max-w-xs"
+                    className="bg-gray-800 text-white text-md input input-bordered w-full max-w-xs"
                   >
                     <option value="ALL">ALL</option>
                     <option value="MALE">MALE</option>
@@ -141,7 +141,7 @@ const Home = () => {
                     name="status"
                     value={status}
                     onChange={(e) => { setStatus(e.target.value) }}
-                    className="bg-gray-800 text-white input input-bordered w-full max-w-xs"
+                    className="bg-gray-800 text-white text-md input input-bordered w-full max-w-xs"
                   >
                     <option value="ALL">ALL</option>
                     <option value="IN">IN</option>
