@@ -84,7 +84,6 @@ const Home = () => {
                 <button onClick={() => { setSport("ALL"); setLevel("ALL"); setSex("ALL"); setStatus("ALL") }} className=" btn btn-primary text-black bg-yellow-500  hover:bg-gray-800  hover:text-gray-500">RESET</button>
               </>}
               <button onClick={() => filter ? setFilter(false) : setFilter(true)} className="btn btn-primary text-black bg-yellow-500  hover:bg-gray-800  hover:text-gray-500">FILTER</button>
-
             </div>
             {filter ? <div></div> : <>
               <div className='flex items-center bg-white justify-around pt-2 shadow-md rounded-xl p-2'>

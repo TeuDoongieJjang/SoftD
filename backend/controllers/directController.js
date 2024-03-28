@@ -62,8 +62,6 @@ export const login = async (req, res) => {
   try {
     const { fullName, password } = req.body;
 
-    const ip = req.headers["x-forwarded-for"] || req.connection.remoteAddress;
-
     const studentName = await Student.findOne({ fullName: fullName.toUpperCase() });
 
     if (!studentName) {
@@ -190,8 +188,6 @@ export const signup = async (req, res) => {
       return res.status(400).json({ error: "Incomplete Information" });
     }
 
-    const ip = req.headers["x-forwarded-for"] || req.connection.remoteAddress;
-
     const student = await Student.findOne({ fullName: fullName });
 
     if (student) {
@@ -199,7 +195,6 @@ export const signup = async (req, res) => {
     }
 
     const newStudent = new Student({
-      ipAddress: ip,
       fullName: fullName.toUpperCase(),
       password: password,
       sport: sport,
@@ -213,7 +208,6 @@ export const signup = async (req, res) => {
 
     return res.status(200).json({
       id: newStudent._id,
-      ipAddress: newStudent.ipAddress,
       fullName: newStudent.fullName,
       sport: newStudent.sport,
       sex: newStudent.sex,

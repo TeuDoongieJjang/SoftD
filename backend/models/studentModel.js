@@ -1,9 +1,6 @@
 import mongoose from "mongoose";
 
 const studentSchema = new mongoose.Schema({
-  ipAddress: {
-    type: String,
-  },
   fullName: {
     type: String,
     required: true,
