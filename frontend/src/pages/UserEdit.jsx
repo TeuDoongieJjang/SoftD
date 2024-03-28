@@ -29,7 +29,7 @@ const UserEdit = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const res = await axios.get(`/user/edit/${id}`)
+        const res = await axios.get(`/api/user/edit/${id}`)
         console.log(res.data)
         if (!res.data) {
           toast.error(res.data.error)
