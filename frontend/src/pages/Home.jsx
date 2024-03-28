@@ -66,7 +66,7 @@ const Home = () => {
           <div className='text-center'>
             <label className="text-3xl font-bold">STUDENT MONITORING</label>
           </div>
-          <div className="flex items-center justify-between pt-3">
+          <div className="flex items-center justify-items-stretch pt-3">
             <button className="btn btn-primary text-black bg-yellow-500  hover:bg-blue-500  hover:text-white" onClick={logout}>LOG OUT</button>
             <button className="btn btn-primary text-black bg-yellow-500 hover:bg-blue-500  hover:text-white" onClick={() => { navigate(`/api/io/${authUser.id}`) }}>IN || OUT</button>
             <button className="btn btn-primary text-black bg-yellow-500 hover:bg-blue-500  hover:text-white" onClick={() => { navigate(`/api/user/edit/${authUser.id}`) }}>EDIT</button>
@@ -91,7 +91,7 @@ const Home = () => {
                       <td className="border px-4 py-2 text-white">{index + 1}</td>
                       <td className="border px-4 py-2 text-white">{male.fullName}</td>
                       <td >
-                        <button onClick={() => { navigate(`/api/view/${male._id}`) }} className="btn btn-primary bg-yellow-500 text-black hover:bg-blue-500 hover:text-white">
+                        <button onClick={() => { navigate(`/api/view/${male._id}`) }} className="btn btn-primary bg-yellow-500 text-black hover:bg-gray-500 hover:text-white">
                           {male.status}
                         </button>
                       </td>
@@ -116,7 +116,7 @@ const Home = () => {
                       <td className="border px-4 py-2 text-white">{index + 1}</td>
                       <td className="border px-4 py-2 text-white">{female.fullName}</td>
                       <td >
-                        <button onClick={() => { navigate(`/api/view/${female._id}`) }} className="btn btn-primary bg-yellow-500 text-black hover:bg-blue-500 hover:text-white">
+                        <button onClick={() => { navigate(`/api/view/${female._id}`) }} className="btn btn-primary bg-yellow-500 text-black hover:bg-gray-500 hover:text-white">
                           {female.status}
                         </button>
                       </td>

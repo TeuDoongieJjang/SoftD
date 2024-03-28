@@ -98,23 +98,23 @@ const View = () => {
             <div className="w-full max-w-sm mx-auto bg-white shadow-md rounded-2xl pr-8 pl-8 pt-4 pb-4 ">
               <span className='block mb-2 text-2xl text-center text-black font-bold'>INFORMATION</span>
               <div>
-                <label className='text-black text-md font-bold'>EMAIL :</label>
+                <label className='text-gray-500 text-sm font-bold'>EMAIL</label>
                 <span className="bg-gray-800 block mb-2 input input-bordered pt-1 pb-1 text-center text-lg text-white  h-fit"> {email}</span>
               </div>
               <div>
-                <label className='text-black text-md font-bold'>LEVEL :</label>
+                <label className='text-gray-500 text-sm font-bold'>LEVEL</label>
                 <span className="bg-gray-800 block mb-2 input input-bordered pt-1 pb-1 text-center text-lg text-white  h-fit"> {level}</span>
               </div>
               <div>
-                <label className='text-black text-md font-bold'>SPORT :</label>
+                <label className='text-gray-500 text-sm font-bold'>SPORT</label>
                 <span className="bg-gray-800 block mb-2 input input-bordered pt-1 pb-1 text-center text-lg text-white  h-fit"> {sport}</span>
               </div>
               <div>
-                <label className='text-black text-md font-bold'>SEX :</label>
+                <label className='text-gray-500 text-sm font-bold'>SEX</label>
                 <span className="bg-gray-800 block mb-2 input input-bordered pt-1 pb-1 text-center text-lg text-white  h-fit"> {sex}</span>
               </div>
               <div>
-                <label className='text-black text-md font-bold'>BIRTHDATE :</label>
+                <label className='text-gray-500 text-sm font-bold'>BIRTHDATE</label>
                 <span className="bg-gray-800 block mb-2 input input-bordered pt-1 pb-1 text-center text-lg text-white  h-fit"> {birthdate}</span>
               </div>
             </div>
