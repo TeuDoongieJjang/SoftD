@@ -95,7 +95,7 @@ const Home = () => {
                     name="sport"
                     value={sport}
                     onChange={(e) => { setSport(e.target.value) }}
-                    className="bg-gray-800 text-white input input-bordered w-full max-w-xs"
+                    className="bg-gray-500 text-white input input-bordered w-full max-w-xs"
                   >
                     <option value="ALL">ALL</option>
                     <option value="BASKETBALL">BASKETBALL</option>
@@ -110,7 +110,7 @@ const Home = () => {
                     name="level"
                     value={level}
                     onChange={(e) => { setLevel(e.target.value) }}
-                    className="bg-gray-800 text-white input input-bordered w-full max-w-xs"
+                    className="bg-gray-500 text-white input input-bordered w-full max-w-xs"
                   >
                     <option value="ALL">ALL</option>
                     <option value="FRESHMEN">FRESHMEN</option>
@@ -126,7 +126,7 @@ const Home = () => {
                     name="sex"
                     value={sex}
                     onChange={(e) => { setSex(e.target.value) }}
-                    className="bg-gray-800 text-white input input-bordered w-full max-w-xs"
+                    className="bg-gray-500 text-white input input-bordered w-full max-w-xs"
                   >
                     <option value="ALL">ALL</option>
                     <option value="MALE">MALE</option>
@@ -141,7 +141,7 @@ const Home = () => {
                     name="status"
                     value={status}
                     onChange={(e) => { setStatus(e.target.value) }}
-                    className="bg-gray-800 text-white input input-bordered w-full max-w-xs"
+                    className="bg-gray-500 text-white input input-bordered w-full max-w-xs"
                   >
                     <option value="ALL">ALL</option>
                     <option value="IN">IN</option>
