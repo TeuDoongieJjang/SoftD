@@ -19,14 +19,14 @@ function App() {
     <>
       <Toaster position="bottom-center" reverseOrder={true} />
       <Routes>
-        <Route path='/' element={authUser ? <Navigate to={`/io/${authUser.id}`} /> : <Navigate to='/login' />} />
-        <Route path='/:id' element={authUser ? <Home /> : <Navigate to='/login' />} />
-        <Route path='/signup' element={<SignUp />} />
-        <Route path='/login' element={<LogIn />} />
-        <Route path='/io/:id' element={authUser ? <InOrOut /> : <Navigate to='/login' />} />
-        <Route path='/io/:id/:action' element={authUser ? <InOut /> : <Navigate to='/login' />} />
-        <Route path='/view/:id' element={authUser ? <View /> : <Navigate to='/login' />} />
-        <Route path='/user/edit/:id' element={authUser ? <UserEdit /> : <Navigate to='/login' />} />
+        <Route path='/api' element={authUser ? <Navigate to={`/api/io/${authUser.id}`} /> : <Navigate to='/api/login' />} />
+        <Route path='/api/:id' element={authUser ? <Home /> : <Navigate to='/api/login' />} />
+        <Route path='/api/signup' element={<SignUp />} />
+        <Route path='/api/login' element={<LogIn />} />
+        <Route path='/api/io/:id' element={authUser ? <InOrOut /> : <Navigate to='/api/login' />} />
+        <Route path='/api/io/:id/:action' element={authUser ? <InOut /> : <Navigate to='/api/login' />} />
+        <Route path='/api/view/:id' element={authUser ? <View /> : <Navigate to='/api/login' />} />
+        <Route path='/api/user/edit/:id' element={authUser ? <UserEdit /> : <Navigate to='/api/login' />} />
       </Routes>
     </>
   )

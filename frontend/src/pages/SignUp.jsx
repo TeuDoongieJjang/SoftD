@@ -140,7 +140,7 @@ const SignUpPage = () => {
                     </div>
                 </div>
                 <div className="flex items-center justify-between pb-2 pt-2">
-                    <Link to='/login'><button className="btn btn-outline hover:text-black hover:bg-yellow-500">
+                    <Link to='/api/login'><button className="btn btn-outline hover:text-black hover:bg-yellow-500">
                         LOG IN
                     </button></Link>
                     <button type='submit' className="btn bg-yellow-500 hover:outline hover:bg-white hover:ring-blue-500 hover:text-gray-500 text-black" >

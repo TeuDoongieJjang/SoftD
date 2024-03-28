@@ -10,17 +10,17 @@ const InOut = () => {
     const { authUser } = useAuthContext()
     const navigate = useNavigate()
 
-    if (authUser.id !== id) { navigate(`/${authUser.id}`) }
+    if (authUser.id !== id) { navigate(`/api/${authUser.id}`) }
 
     useEffect(() => {
         const io = async () => {
             try {
-                const res = await axios.put(`/io/${id}/${action}`)
+                const res = await axios.put(`/api/io/${id}/${action}`)
                 if (res.data.error) {
                     toast.error(res.data.error)
                 } else {
                     toast.success(res.data.message)
-                    navigate(`/${id}`)
+                    navigate(`/api/${id}`)
                 }
             } catch (error) {
                 if (error.response && error.response.data && error.response.data.error) {

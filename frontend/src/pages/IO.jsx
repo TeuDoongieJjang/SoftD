@@ -10,7 +10,7 @@ const InOrOut = () => {
   const { authUser } = useAuthContext()
   const navigate = useNavigate()
 
-  if (authUser.id !== id) { navigate(`/io/${authUser.id}`) }
+  if (authUser.id !== id) { navigate(`/api/io/${authUser.id}`) }
 
   const [loading, setLoading] = useState(true)
   const [name, setName] = useState('')
@@ -22,10 +22,10 @@ const InOrOut = () => {
   useEffect(() => {
     const io = async () => {
       try {
-        const res = await axios.get(`/io/${authUser.id}`)
+        const res = await axios.get(`/api/io/${authUser.id}`)
         if (res.data && res.data.error) {
           toast.error(res.data.error)
-          navigate('/login')
+          navigate('/api/login')
         } else {
           if (res.data) {
             setName(res.data.name)
@@ -34,17 +34,17 @@ const InOrOut = () => {
             setLoading(false)
           } else {
             toast.error('User ID not found in response')
-            navigate('/login')
+            navigate('/api/login')
           }
         }
 
       } catch (error) {
         if (error.response && error.response.data && error.response.data.error) {
           toast.error(error.response.data.error)
-          navigate('/login')
+          navigate('/api/login')
         } else {
           toast.error('An error occurred. Please try again.')
-          navigate('/login')
+          navigate('/api/login')
         }
       }
     }
@@ -72,11 +72,11 @@ const InOrOut = () => {
               <label className='text-black font-bold text-2xl text-center break-words'>{name}</label>
             </div>
             <div className='flex items-center justify-between'>
-              <button disabled={timeStatsIn} className='btn btn-primary bg-yellow-500 text-black hover:bg-blue-500 hover:text-white' onClick={() => { navigate(`/io/${id}/in`); }} >
+              <button disabled={timeStatsIn} className='btn btn-primary bg-yellow-500 text-black hover:bg-blue-500 hover:text-white' onClick={() => { navigate(`/api/io/${id}/in`); }} >
                 IN
               </button>
-              <button className='btn btn-primary bg-yellow-500 text-black hover:bg-blue-500 hover:text-white' onClick={() => navigate(`/${id}`)}>HOME</button>
-              <button disabled={timeStatsOut} className='btn btn-primary bg-yellow-500 text-black hover:bg-blue-500 hover:text-white' onClick={() => { navigate(`/io/${id}/out`); }} >
+              <button className='btn btn-primary bg-yellow-500 text-black hover:bg-blue-500 hover:text-white' onClick={() => navigate(`/api/${id}`)}>HOME</button>
+              <button disabled={timeStatsOut} className='btn btn-primary bg-yellow-500 text-black hover:bg-blue-500 hover:text-white' onClick={() => { navigate(`/api/io/${id}/out`); }} >
                 OUT
               </button>
             </div>

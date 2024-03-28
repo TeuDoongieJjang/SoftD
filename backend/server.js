@@ -14,7 +14,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use("/", directRoute);
+app.use("/api", directRoute);
 
 app.use(express.static(path.join(__dirname, "/frontend/dist")));
 

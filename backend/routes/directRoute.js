@@ -21,14 +21,14 @@ router.use(
   })
 );
 
-router.get("/:id", home);
-router.post("/login", login);
-router.get("/logout", logout);
-router.get("/io/:id", io);
-router.put("/io/:id/:action", ioOp);
-router.post("/signup", signup);
-router.get("/view/:id", view);
-router.put("/user/edit/:id", userEdit);
-router.get("/user/edit/:id", userView);
+router.get("/api/:id", home);
+router.post("/api/login", login);
+router.get("/api/logout", logout);
+router.get("/api/io/:id", io);
+router.put("/api/io/:id/:action", ioOp);
+router.post("/api/signup", signup);
+router.get("/api/view/:id", view);
+router.put("/api/user/edit/:id", userEdit);
+router.get("/api/user/edit/:id", userView);
 
 export default router;

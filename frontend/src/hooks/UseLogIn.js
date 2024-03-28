@@ -17,24 +17,28 @@ export const useLogIn = () => {
     const data = { fullName, password };
 
     try {
-      const res = await axios.post("/login", data);
+      const res = await axios.post("/api/login", data);
       if (res.data.error) {
         toast.error(res.data.error);
+        navigate('/api/login')
       } else {
         toast.success("Successfully Logged In");
         localStorage.setItem("AuthUser", JSON.stringify(res.data));
         setAuthUser(res.data);
         if (res.data) {
-          navigate(`/io/${res.data.id}`);
+          navigate(`/api/io/${res.data.id}`);
         } else {
           toast.error("User ID not found in response");
+          navigate('/api/login')
         }
       }
     } catch (error) {
       if (error.response && error.response.data && error.response.data.error) {
         toast.error(error.response.data.error);
+        navigate('/api/login')
       } else {
         toast.error("An error occurred. Please try again.");
+        navigate('/api/login')
       }
     }
   };

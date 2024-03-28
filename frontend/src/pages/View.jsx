@@ -26,10 +26,10 @@ const View = () => {
   useEffect(() => {
     const view = async () => {
       try {
-        const res = await axios.get(`/view/${id}`)
+        const res = await axios.get(`/api/view/${id}`)
         if (!res.data) {
           toast.error(res.data.error)
-          navigate('/login')
+          navigate('/api/login')
           setLoading(false)
         } else {
           if (res.data.studentData) {
@@ -57,11 +57,11 @@ const View = () => {
       } catch (error) {
         if (error.response && error.response.data && error.response.data.error) {
           toast.error(error.response.data.error)
-          navigate('/login')
+          navigate('/api/login')
           setLoading(false)
         } else {
           toast.error('An error occurred. Please try again.')
-          navigate('/login')
+          navigate('/api/login')
         }
       }
     }
@@ -89,7 +89,7 @@ const View = () => {
             <div className='text-center'><span className="text-xl text-center font-bold">{name}</span></div>
             <div className="flex justify-between">
               <button className="btn btn-primary text-black bg-yellow-500  hover:bg-blue-500  hover:text-white" onClick={logout}>LOG OUT</button>
-              <button className="btn btn-primary text-black bg-yellow-500  hover:bg-blue-500  hover:text-white" onClick={() => { navigate(`/${authUser.id}`) }}>HOME</button>
+              <button className="btn btn-primary text-black bg-yellow-500  hover:bg-blue-500  hover:text-white" onClick={() => { navigate(`/api/${authUser.id}`) }}>HOME</button>
             </div>
           </div>
         </header>

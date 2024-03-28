@@ -17,24 +17,28 @@ const useSignUp = () => {
     const data = { fullName, password, sport, sex, level, email, birthdate };
 
     try {
-      const res = await axios.post("/signup", data);
+      const res = await axios.post("/api/signup", data);
       if (res.data.error) {
         toast.error(res.data.error);
+        navigate('/api/signup')
       } else {
         toast.success("Succesfully Signed Up");
         localStorage.setItem("AuthUser", JSON.stringify(res.data));
         setAuthUser(res.data);
         if (res.data && res.data.id) {
-          navigate(`/io/${res.data.id}`);
+          navigate(`/api/io/${res.data.id}`);
         } else {
           toast.error("User ID not found in response");
+          navigate('/api/signup')
         }
       }
     } catch (error) {
       if (error.response && error.response.data && error.response.data.error) {
         toast.error(error.response.data.error);
+        navigate('/api/signup')
       } else {
         toast.error("An error occurred. Please try again.");
+        navigate('/api/signup')
       }
     }
   };

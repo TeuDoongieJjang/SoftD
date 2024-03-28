@@ -11,7 +11,7 @@ const Home = () => {
   const { authUser } = useAuthContext()
   const navigate = useNavigate()
 
-  if (authUser.id !== id) { navigate(`/${authUser.id}`) }
+  if (authUser.id !== id) { navigate(`/api/${authUser.id}`) }
 
   const [loading, setLoading] = useState(true)
   const [males, setMales] = useState([])
@@ -22,10 +22,10 @@ const Home = () => {
 
     const showStudent = async () => {
       try {
-        const res = await axios.get(`/${authUser.id}`)
+        const res = await axios.get(`/api/${authUser.id}`)
         if (res.data.error) {
           toast.error(res.data.error)
-          navigate('/login')
+          navigate('/api/login')
         }
         setMales(res.data.Male)
         setFemales(res.data.Female)
@@ -33,10 +33,10 @@ const Home = () => {
       } catch (error) {
         if (error.response && error.response.data && error.response.data.error) {
           toast.error(error.response.data.error);
-          navigate('/login')
+          navigate('/api/login')
         } else {
           toast.error('An error occurred. Please try again.');
-          navigate('/login')
+          navigate('/api/login')
         }
       }
     }
@@ -68,8 +68,8 @@ const Home = () => {
           </div>
           <div className="flex items-center justify-between pt-3">
             <button className="btn btn-primary text-black bg-yellow-500  hover:bg-blue-500  hover:text-white" onClick={logout}>LOG OUT</button>
-            <button className="btn btn-primary text-black bg-yellow-500 hover:bg-blue-500  hover:text-white" onClick={() => { navigate(`/io/${authUser.id}`) }}>IN || OUT</button>
-            <button className="btn btn-primary text-black bg-yellow-500 hover:bg-blue-500  hover:text-white" onClick={() => { navigate(`/user/edit/${authUser.id}`) }}>EDIT</button>
+            <button className="btn btn-primary text-black bg-yellow-500 hover:bg-blue-500  hover:text-white" onClick={() => { navigate(`/api/io/${authUser.id}`) }}>IN || OUT</button>
+            <button className="btn btn-primary text-black bg-yellow-500 hover:bg-blue-500  hover:text-white" onClick={() => { navigate(`/api/user/edit/${authUser.id}`) }}>EDIT</button>
           </div>
         </header>
         <main className="flex-grow p-4 ">
@@ -91,7 +91,7 @@ const Home = () => {
                       <td className="border px-4 py-2 text-white">{index + 1}</td>
                       <td className="border px-4 py-2 text-white">{male.fullName}</td>
                       <td >
-                        <button onClick={() => { navigate(`/view/${male._id}`) }} className="btn btn-outline hover:text-black hover:bg-yellow-500 text-white">
+                        <button onClick={() => { navigate(`/api/view/${male._id}`) }} className="btn btn-outline hover:text-black hover:bg-yellow-500 text-white">
                           {male.status}
                         </button>
                       </td>
@@ -116,7 +116,7 @@ const Home = () => {
                       <td className="border px-4 py-2 text-white">{index + 1}</td>
                       <td className="border px-4 py-2 text-white">{female.fullName}</td>
                       <td >
-                        <button onClick={() => { navigate(`/view/${female._id}`) }} className="btn btn-outline hover:text-black hover:bg-yellow-500 text-white">
+                        <button onClick={() => { navigate(`/api/view/${female._id}`) }} className="btn btn-outline hover:text-black hover:bg-yellow-500 text-white">
                           {female.status}
                         </button>
                       </td>

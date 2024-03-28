@@ -33,7 +33,7 @@ const UserEdit = () => {
         console.log(res.data)
         if (!res.data) {
           toast.error(res.data.error)
-          navigate('/login')
+          navigate('/api/login')
           setLoading(false)
         } else {
           if (res.data.student) {
@@ -62,11 +62,11 @@ const UserEdit = () => {
       } catch (error) {
         if (error.response && error.response.data && error.response.data.error) {
           toast.error(error.response.data.error)
-          navigate('/login')
+          navigate('/api/login')
           setLoading(false)
         } else {
           toast.error('An error occurred. Please try again.')
-          navigate('/login')
+          navigate('/api/login')
         }
       }
     }
@@ -89,11 +89,11 @@ const UserEdit = () => {
     e.preventDefault()
     const data = { fullName, password, sport, sex, level, email, birthdate }
     try {
-      const res = await axios.put(`/user/edit/${id}`, data)
+      const res = await axios.put(`/api/user/edit/${id}`, data)
       if (res.data.error) {
         toast.error(res.data.error)
       }
-      navigate(`/${id}`)
+      navigate(`/api/${id}`)
     } catch (error) {
       if (error.response && error.response.data && error.response.data.error) {
         toast.error(error.response.data.error)
@@ -117,7 +117,7 @@ const UserEdit = () => {
             <div className='text-center'><span className="text-xl text-center font-bold">{name}</span></div>
             <div className="flex justify-between">
               <button className="btn btn-primary text-black bg-yellow-500  hover:bg-blue-500  hover:text-white" onClick={logout}>LOG OUT</button>
-              <button className="btn btn-primary text-black bg-yellow-500  hover:bg-blue-500  hover:text-white" onClick={() => { navigate(`/${authUser.id}`) }}>HOME</button>
+              <button className="btn btn-primary text-black bg-yellow-500  hover:bg-blue-500  hover:text-white" onClick={() => { navigate(`/api/${authUser.id}`) }}>HOME</button>
               <button className="btn btn-primary text-black bg-yellow-500  hover:bg-blue-500  hover:text-white" onClick={handleSubmit}>SAVE</button>
             </div>
           </div>
