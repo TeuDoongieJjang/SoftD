@@ -91,7 +91,7 @@ const Home = () => {
                       <td className="border px-4 py-2 text-white">{index + 1}</td>
                       <td className="border px-4 py-2 text-white">{male.fullName}</td>
                       <td >
-                        <button onClick={() => { navigate(`/api/view/${male._id}`) }} className="btn btn-outline hover:text-black hover:bg-yellow-500 text-white">
+                        <button onClick={() => { navigate(`/api/view/${male._id}`) }} className="btn btn-primary bg-yellow-500 text-black hover:bg-blue-500 hover:text-white">
                           {male.status}
                         </button>
                       </td>
@@ -116,7 +116,7 @@ const Home = () => {
                       <td className="border px-4 py-2 text-white">{index + 1}</td>
                       <td className="border px-4 py-2 text-white">{female.fullName}</td>
                       <td >
-                        <button onClick={() => { navigate(`/api/view/${female._id}`) }} className="btn btn-outline hover:text-black hover:bg-yellow-500 text-white">
+                        <button onClick={() => { navigate(`/api/view/${female._id}`) }} className="btn btn-primary bg-yellow-500 text-black hover:bg-blue-500 hover:text-white">
                           {female.status}
                         </button>
                       </td>
