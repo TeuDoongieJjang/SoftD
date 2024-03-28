@@ -87,15 +87,15 @@ const Home = () => {
 
             </div>
             {filter ? <div></div> : <>
-              <div className='flex items-center justify-around pt-2'>
+              <div className='flex items-center bg-white justify-around pt-2 shadow-md rounded-2xl p-2'>
                 <div >
-                  <label htmlFor="sport" className="flex text-gray-300 text-sm font-bold mb-2">SPORT</label>
+                  <label htmlFor="sport" className="flex text-gray-500 text-sm font-bold mb-2">SPORT</label>
                   <select
                     id="sport"
                     name="sport"
                     value={sport}
                     onChange={(e) => { setSport(e.target.value) }}
-                    className="bg-gray-500 text-white input input-bordered w-full max-w-xs"
+                    className="bg-gray-800 text-white input input-bordered w-full max-w-xs"
                   >
                     <option value="ALL">ALL</option>
                     <option value="BASKETBALL">BASKETBALL</option>
@@ -104,13 +104,13 @@ const Home = () => {
                   </select>
                 </div>
                 <div>
-                  <label htmlFor="level" className="flex text-gray-300 text-sm font-bold mb-2">LEVEL</label>
+                  <label htmlFor="level" className="flex text-gray-500 text-sm font-bold mb-2">LEVEL</label>
                   <select
                     id="level"
                     name="level"
                     value={level}
                     onChange={(e) => { setLevel(e.target.value) }}
-                    className="bg-gray-500 text-white input input-bordered w-full max-w-xs"
+                    className="bg-gray-800 text-white input input-bordered w-full max-w-xs"
                   >
                     <option value="ALL">ALL</option>
                     <option value="FRESHMEN">FRESHMEN</option>
@@ -120,13 +120,13 @@ const Home = () => {
                   </select>
                 </div>
                 <div>
-                  <label htmlFor="sex" className="block text-gray-300 text-sm font-bold mb-2">SEX</label>
+                  <label htmlFor="sex" className="block text-gray-500 text-sm font-bold mb-2">SEX</label>
                   <select
                     id="sex"
                     name="sex"
                     value={sex}
                     onChange={(e) => { setSex(e.target.value) }}
-                    className="bg-gray-500 text-white input input-bordered w-full max-w-xs"
+                    className="bg-gray-800 text-white input input-bordered w-full max-w-xs"
                   >
                     <option value="ALL">ALL</option>
                     <option value="MALE">MALE</option>
@@ -135,13 +135,13 @@ const Home = () => {
                   </select>
                 </div>
                 <div>
-                  <label htmlFor="status" className="block text-gray-300 text-sm font-bold mb-2">STATUS</label>
+                  <label htmlFor="status" className="block text-gray-500 text-sm font-bold mb-2">STATUS</label>
                   <select
                     id="status"
                     name="status"
                     value={status}
                     onChange={(e) => { setStatus(e.target.value) }}
-                    className="bg-gray-500 text-white input input-bordered w-full max-w-xs"
+                    className="bg-gray-800 text-white input input-bordered w-full max-w-xs"
                   >
                     <option value="ALL">ALL</option>
                     <option value="IN">IN</option>
