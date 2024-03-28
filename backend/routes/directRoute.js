@@ -17,7 +17,7 @@ const router = express.Router();
 router.use(
   cors({
     credentials: true,
-    origin: "https://softd.onrender.com",
+    origin: "https://softd.onrender.com/api",
   })
 );
 
