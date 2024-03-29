@@ -124,7 +124,6 @@ const SignUpPage = () => {
                             <option value="">SELECT</option>
                             <option value="MALE">MALE</option>
                             <option value="FEMALE">FEMALE</option>
-                            <option value="SIKRET">SIKRET</option>
                         </select>
                     </div>
                     <div>

@@ -21,7 +21,6 @@ const useLogOut = () => {
         navigate("/api/login");
       }
     } catch (error) {
-      toast.error(error.message);
       navigate('/api/login')
     }
   };

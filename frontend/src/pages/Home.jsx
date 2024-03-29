@@ -22,6 +22,10 @@ const Home = () => {
   const [sex, setSex] = useState('ALL')
   const [status, setStatus] = useState('ALL')
   const [filter, setFilter] = useState(true)
+  const [students, setStudents] = useState([])
+  const [filteredSearch, setFilteredSearch] = useState([])
+  const [searchInput, setSearchInput] = useState('');
+  const [email, setEmail] = useState('')
 
   useEffect(() => {
 
@@ -34,6 +38,8 @@ const Home = () => {
         }
         setMales(res.data.Male)
         setFemales(res.data.Female)
+        setStudents(res.data.Student)
+        setEmail(res.data.email)
         setLoading(false)
       } catch (error) {
         if (error.response && error.response.data && error.response.data.error) {
@@ -62,6 +68,10 @@ const Home = () => {
 
   }, [authUser.id, navigate])
 
+  const Reset = (choice) => {
+    setSearchInput(''); setSport("ALL"); setLevel("ALL"); setSex("ALL"); setStatus("ALL"); setFilter(choice)
+  }
+
 
   return (
 
@@ -71,7 +81,7 @@ const Home = () => {
           <div className='text-center'>
             <label className="text-3xl font-bold">STUDENT MONITORING</label>
           </div>
-          <div className="flex items-center justify-around pt-3">
+          <div className="flex items-center justify-between pt-3">
             <button className="btn btn-primary text-black bg-yellow-500  hover:bg-blue-500  hover:text-gray-500" onClick={logout}>LOG OUT</button>
             <button className="btn btn-primary text-black bg-yellow-500 hover:bg-blue-500  hover:text-gray-500" onClick={() => { navigate(`/api/io/${authUser.id}`) }}>IN || OUT</button>
             <button className="btn btn-primary text-black bg-yellow-500 hover:bg-blue-500  hover:text-gray-500" onClick={() => { navigate(`/api/user/edit/${authUser.id}`) }}>EDIT</button>
@@ -81,9 +91,19 @@ const Home = () => {
           <div className='flex flex-col'>
             <div className='flex justify-between'>
               {filter ? <div></div> : <>
-                <button onClick={() => { setSport("ALL"); setLevel("ALL"); setSex("ALL"); setStatus("ALL") }} className=" btn btn-primary text-black bg-yellow-500  hover:bg-gray-800  hover:text-gray-500">RESET</button>
+                <input
+                  type="text"
+                  className='font-bold  form-control bg-white text-gray-500 text-base px-2 py-1 input input-bordered w-fit max-w-xs'
+                  placeholder='SEARCH'
+                  value={searchInput}
+                  onChange={(e) => {
+                    const upperCaseValue = e.target.value.toUpperCase();
+                    setSearchInput(upperCaseValue);
+                    setFilteredSearch(students.filter(pupil => pupil.fullName.includes(upperCaseValue)));
+                  }}
+                />
               </>}
-              <button onClick={() => filter ? setFilter(false) : setFilter(true)} className="btn btn-primary text-black bg-yellow-500  hover:bg-gray-800  hover:text-gray-500">FILTER</button>
+              <button onClick={() => filter ? Reset(false) : Reset(true)} className="btn btn-primary text-black bg-yellow-500  hover:bg-gray-800  hover:text-gray-500">FILTER</button>
             </div>
             {filter ? <div></div> : <>
               <div className='flex items-center bg-white justify-around pt-2 shadow-md rounded-xl p-2'>
@@ -130,7 +150,6 @@ const Home = () => {
                     <option value="ALL">ALL</option>
                     <option value="MALE">MALE</option>
                     <option value="FEMALE">FEMALE</option>
-                    <option value="SIKRET">SIKRET</option>
                   </select>
                 </div>
                 <div>
@@ -151,63 +170,273 @@ const Home = () => {
               </div>
             </>}
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 pt-2 gap-4">
-            {sex !== "MALE" && sex !== "ALL" ? <div></div> : <>
-              <div>
-                <h1 className="text-2xl font-bold mb-4  text-white">MALE</h1>
-                <table className="table-auto w-full">
-                  <thead>
-                    <tr>
-                      <th className="border px-4 py-2 text-white">NO</th>
-                      <th className="border px-4 py-2 text-white">NAME</th>
-                      <th className="border px-4 py-2 text-white">STATUS</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {males.filter(male => ((sport === "ALL" ? true : male.sport === sport) && (level === "ALL" ? true : male.level === level) && (status === "ALL" ? true : male.status === status))).map((filteredMale, index) => (
-                      <tr key={filteredMale._id} className="text-center">
-                        <td className="border px-4 py-2 text-white">{index + 1}</td>
-                        <td className="border px-4 py-2 text-white">{filteredMale.fullName}</td>
-                        <td>
-                          <button onClick={() => navigate(`/api/view/${filteredMale._id}`)} className="btn btn-primary bg-yellow-500 text-black hover:bg-gray-800 hover:text-gray-500">
-                            {filteredMale.status}
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </>}
-            {sex !== "FEMALE" && sex !== "ALL" ? <div></div> : <>
-              <div>
-                <h1 className="text-2xl font-bold mb-4 text-white">FEMALE</h1>
-                <table className="table-auto w-full">
-                  <thead>
-                    <tr>
-                      <th className="border px-4 py-2 text-white">NO</th>
-                      <th className="border px-4 py-2 text-white">NAME</th>
-                      <th className="border px-4 py-2 text-white">STATUS</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {females.filter(female => ((sport === "ALL" ? true : female.sport === sport) && (level === "ALL" ? true : female.level === level) && (status === "ALL" ? true : female.status === status))).map((filteredFemale, index) => (
-                      <tr key={filteredFemale._id} className="text-center">
-                        <td className="border px-4 py-2 text-white">{index + 1}</td>
-                        <td className="border px-4 py-2 text-white">{filteredFemale.fullName}</td>
-                        <td>
-                          <button onClick={() => navigate(`/api/view/${filteredFemale._id}`)} className="btn btn-primary bg-yellow-500 text-black hover:bg-gray-800 hover:text-gray-500">
-                            {filteredFemale.status}
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </>}
-          </div>
+          {email === '2022-111922@rtu.edu.ph' ||
+           email === '2022-103284@rtu.edu.ph' ||
+           email === '2022-103137@rtu.edu.ph' ||
+           email === '2021-109061@rtu.edu.ph' ||
+           email === '2022-103325@rtu.edu.ph' ?
+            <>
+              {!filter ?
+                <>
+                  {searchInput ?
+                    <div>
+                      <h1 className="text-2xl font-bold mb-4  text-white">ALL</h1>
+                      <table className="table-auto w-full">
+                        <thead>
+                          <tr>
+                            <th className="border p-1 text-white">NO</th>
+                            <th className="border p-1 text-white">NAME</th>
+                            <th className="border p-1 text-white">STATUS</th>
+                            <th className="border p-1 text-white">EDIT</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {filteredSearch.map((filteredAll, index) => (
+                            <tr key={filteredAll._id} className="text-center">
+                              <td className="border p-1 text-white">{index + 1}</td>
+                              <td className="border p-1 text-white">{filteredAll.fullName}</td>
+                              <td >
+                                <button onClick={() => navigate(`/api/view/${filteredAll._id}`)} className="btn btn-primary bg-yellow-500 text-black hover:bg-gray-800 hover:text-gray-500">
+                                  {filteredAll.status}
+                                </button>
+                              </td>
+                              <td >
+                                <button onClick={() => navigate(`/api/delete/${filteredAll._id}`)} className="btn btn-primary bg-yellow-500 text-black hover:bg-gray-800 hover:text-gray-500">
+                                  DELETE
+                                </button>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                    :
+                    <>
+                      <div>
+                        <h1 className="text-2xl font-bold mb-4  text-white">ALL</h1>
+                        <table className="table-auto w-full">
+                          <thead>
+                            <tr>
+                              <th className="border p-1 text-white">NO</th>
+                              <th className="border p-1 text-white">NAME</th>
+                              <th className="border p-1 text-white">STATUS</th>
+                              <th className="border p-1 text-white">EDIT</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {students.filter(pupil => ((sport === "ALL" ? true : pupil.sport === sport) && (level === "ALL" ? true : pupil.level === level) && (status === "ALL" ? true : pupil.status === status) && (sex === "ALL" ? true : pupil.sex === sex))).map((filteredPupil, index) => (
+                              <tr key={filteredPupil._id} className="text-center">
+                                <td className="border p-1 text-white">{index + 1}</td>
+                                <td className="border p-1 text-white">{filteredPupil.fullName}</td>
+                                <td >
+                                  <button onClick={() => navigate(`/api/view/${filteredPupil._id}`)} className="btn btn-primary bg-yellow-500 text-black hover:bg-gray-800 hover:text-gray-500">
+                                    {filteredPupil.status}
+                                  </button>
+                                </td>
+                                <td >
+                                  <button onClick={() => navigate(`/api/delete/${students._id}`)} className="btn btn-primary bg-yellow-500 text-black hover:bg-gray-800 hover:text-gray-500">
+                                    DELETE
+                                  </button>
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    </>}
+                </>
+                :
+                <>
+                  <div className="grid grid-cols-1 md:grid-cols-2 pt-2 gap-4">
+                    <div>
+                      <h1 className="text-2xl font-bold mb-4  text-white">MALE</h1>
+                      <table className="table-auto w-full">
+                        <thead>
+                          <tr>
+                            <th className="border p-1 text-white">NO</th>
+                            <th className="border p-1 text-white">NAME</th>
+                            <th className="border p-1 text-white">STATUS</th>
+                            <th className="border p-1 text-white">EDIT</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {males.map((male, index) => (
+                            <tr key={male._id} className="text-center">
+                              <td className="border p-1 text-white">{index + 1}</td>
+                              <td className="border p-1 text-white">{male.fullName}</td>
+                              <td>
+                                <button onClick={() => navigate(`/api/view/${male._id}`)} className="btn btn-primary bg-yellow-500 text-black hover:bg-gray-800 hover:text-gray-500">
+                                  {male.status}
+                                </button>
 
+                              </td>
+                              <td>
+                                <button onClick={() => navigate(`/api/delete/${male._id}`)} className="btn btn-primary bg-yellow-500 text-black hover:bg-gray-800 hover:text-gray-500">
+                                  DELETE
+                                </button>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                    <div>
+                      <h1 className="text-2xl font-bold mb-4 text-white">FEMALE</h1>
+                      <table className="table-auto w-full">
+                        <thead>
+                          <tr>
+                            <th className="border p-1 text-white">NO</th>
+                            <th className="border p-1 text-white">NAME</th>
+                            <th className="border p-1 text-white">STATUS</th>
+                            <th className="border p-1 text-white">EDIT</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {females.map((female, index) => (
+                            <tr key={female._id} className="text-center">
+                              <td className="border p-1 text-white">{index + 1}</td>
+                              <td className="border p-1 text-white">{female.fullName}</td>
+                              <td>
+                                <button onClick={() => navigate(`/api/view/${female._id}`)} className="btn btn-primary bg-yellow-500 text-black hover:bg-gray-800 hover:text-gray-500">
+                                  {female.status}
+                                </button>
+
+                              </td>
+                              <td>
+                                <button onClick={() => navigate(`/api/delete/${female._id}`)} className="btn btn-primary bg-yellow-500 text-black hover:bg-gray-800 hover:text-gray-500">
+                                  DELETE
+                                </button>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </>}
+            </>
+            :
+            <>
+              {!filter ?
+                <>
+                  {searchInput ?
+                    <div>
+                      <h1 className="text-2xl font-bold mb-4  text-white">ALL</h1>
+                      <table className="table-auto w-full">
+                        <thead>
+                          <tr>
+                            <th className="border p-1 text-white">NO</th>
+                            <th className="border p-1 text-white">NAME</th>
+                            <th className="border p-1 text-white">STATUS</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {filteredSearch.map((filteredAll, index) => (
+                            <tr key={filteredAll._id} className="text-center">
+                              <td className="border p-1 text-white">{index + 1}</td>
+                              <td className="border p-1 text-white">{filteredAll.fullName}</td>
+                              <td >
+                                <button onClick={() => navigate(`/api/view/${filteredAll._id}`)} className="btn btn-primary bg-yellow-500 text-black hover:bg-gray-800 hover:text-gray-500">
+                                  {filteredAll.status}
+                                </button>
+                              </td>
+
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                    :
+                    <>
+                      <div>
+                        <h1 className="text-2xl font-bold mb-4  text-white">ALL</h1>
+                        <table className="table-auto w-full">
+                          <thead>
+                            <tr>
+                              <th className="border p-1 text-white">NO</th>
+                              <th className="border p-1 text-white">NAME</th>
+                              <th className="border p-1 text-white">STATUS</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {students.filter(pupil => ((sport === "ALL" ? true : pupil.sport === sport) && (level === "ALL" ? true : pupil.level === level) && (status === "ALL" ? true : pupil.status === status) && (sex === "ALL" ? true : pupil.sex === sex))).map((filteredPupil, index) => (
+                              <tr key={filteredPupil._id} className="text-center">
+                                <td className="border p-1 text-white">{index + 1}</td>
+                                <td className="border p-1 text-white">{filteredPupil.fullName}</td>
+                                <td >
+                                  <button onClick={() => navigate(`/api/view/${filteredPupil._id}`)} className="btn btn-primary bg-yellow-500 text-black hover:bg-gray-800 hover:text-gray-500">
+                                    {filteredPupil.status}
+                                  </button>
+                                </td>
+
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    </>}
+                </>
+                :
+                <>
+                  <div className="grid grid-cols-1 md:grid-cols-2 pt-2 gap-4">
+
+                    <div>
+                      <h1 className="text-2xl font-bold mb-4  text-white">MALE</h1>
+                      <table className="table-auto w-full">
+                        <thead>
+                          <tr>
+                            <th className="border p-1 text-white">NO</th>
+                            <th className="border p-1 text-white">NAME</th>
+                            <th className="border p-1 text-white">STATUS</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {males.map((male, index) => (
+                            <tr key={male._id} className="text-center">
+                              <td className="border p-1 text-white">{index + 1}</td>
+                              <td className="border p-1 text-white">{male.fullName}</td>
+                              <td>
+                                <button onClick={() => navigate(`/api/view/${male._id}`)} className="btn btn-primary bg-yellow-500 text-black hover:bg-gray-800 hover:text-gray-500">
+                                  {male.status}
+                                </button>
+                              </td>
+
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                    <div>
+                      <h1 className="text-2xl font-bold mb-4 text-white">FEMALE</h1>
+                      <table className="table-auto w-full">
+                        <thead>
+                          <tr>
+                            <th className="border p-1 text-white">NO</th>
+                            <th className="border p-1 text-white">NAME</th>
+                            <th className="border p-1 text-white">STATUS</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {females.map((female, index) => (
+                            <tr key={female._id} className="text-center">
+                              <td className="border p-1 text-white">{index + 1}</td>
+                              <td className="border p-1 text-white">{female.fullName}</td>
+                              <td>
+                                <button onClick={() => navigate(`/api/view/${female._id}`)} className="btn btn-primary bg-yellow-500 text-black hover:bg-gray-800 hover:text-gray-500">
+                                  {female.status}
+                                </button>
+
+                              </td>
+
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </>}
+            </>
+          }
         </main>
         <footer className="bg-gray-200 text-center py-2 rounded-t-xl">
           <label className='text-xl text'>BY RTU/CEIT-03-402P</label>

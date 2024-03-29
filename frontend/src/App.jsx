@@ -5,6 +5,7 @@ import View from './pages/View.jsx'
 import UserEdit from './pages/UserEdit.jsx'
 import InOrOut from './pages/IO.jsx'
 import InOut from './pages/InOut.jsx'
+import HomeEdit from './pages/HomeEdit.jsx'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
 import axios from 'axios'
@@ -21,6 +22,7 @@ function App() {
       <Routes>
         <Route path='/' element={authUser ? <Navigate to={`/api/io/${authUser.id}`} /> : <Navigate to='/api/login' />} />
         <Route path='/api/:id' element={authUser ? <Home /> : <Navigate to='/api/login' />} />
+        <Route path='/api/delete/:id' element={authUser ? <HomeEdit /> : <Navigate to='/api/login' />} />
         <Route path='/api/signup' element={<SignUp />} />
         <Route path='/api/login' element={<LogIn />} />
         <Route path='/api/io/:id' element={authUser ? <InOrOut /> : <Navigate to='/api/login' />} />

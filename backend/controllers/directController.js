@@ -7,11 +7,15 @@ export const home = async (req, res) => {
     const { id } = req.params;
     const students = await Student.find({}).sort({ fullName: 1 });
     const studentsData = [];
+    
+    const studentName = await Student.findOne({ _id: id})
+
+    if(!studentName) {
+      return res.status(400).json({ error: `Student Not Found` });
+    }
 
     for (const student of students) {
-      const studentsTime = await StudentTime.findOne({
-        studentId: student._id,
-      }); // Use findOne instead of find
+      const studentsTime = await StudentTime.findOne({ studentId: student._id })
 
       const getStatus = (studentsTime) => {
         if (
@@ -52,11 +56,25 @@ export const home = async (req, res) => {
     return res.status(200).json({
       Male: male,
       Female: female,
+      Student: studentsData,
+      email: studentName.email,
     });
   } catch (error) {
     return res.status(400).json({ error: `Error in Home Controller ${error}` });
   }
 };
+
+export const homeEdit = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await Student.findByIdAndDelete(id)
+    await StudentTime.findByIdAndDelete(id)
+
+    return res.status(200).json({ message: 'Successfully Deleted' })
+  } catch (error) {
+    return res.status(400).json({ error: `Error in Home Controller ${error}` });
+  }
+}
 
 export const login = async (req, res) => {
   try {

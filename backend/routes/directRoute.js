@@ -9,6 +9,7 @@ import {
   io,
   signup,
   view,
+  homeEdit,
 } from "../controllers/directController.js";
 import cors from "cors";
 
@@ -22,6 +23,7 @@ router.use(
 );
 
 router.get("/api/:id", home);
+router.delete("/api/delete/:id", homeEdit);
 router.post("/api/login", login);
 router.get("/api/logout", logout);
 router.get("/api/io/:id", io);
