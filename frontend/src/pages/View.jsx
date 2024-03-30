@@ -86,7 +86,7 @@ const View = () => {
       {loading ? <div></div> : <>
         <header className="bg-blue-500 rounded-b-xl text-white pl-4 pr-4 pt-3 pb-3 sticky top-0 z-50">
           <div>
-            <div className='text-center'><span className="text-xl text-center font-bold">{name}</span></div>
+            <div className='pb-2 text-center'><span className="text-2xl text-center font-bold">{name}</span></div>
             <div className="flex justify-between">
               <button className="btn btn-primary text-black bg-yellow-500  hover:bg-blue-500  hover:text-white" onClick={logout}>LOG OUT</button>
               <button className="btn btn-primary text-black bg-yellow-500  hover:bg-blue-500  hover:text-white" onClick={() => { navigate(`/api/${authUser.id}`) }}>HOME</button>

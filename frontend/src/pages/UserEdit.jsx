@@ -235,8 +235,8 @@ const UserEdit = () => {
                 <table className="table-auto w-full">
                   <thead>
                     <tr>
-                      <th className="border px-4 py-2 text-white">No</th>
-                      <th className="border px-4 py-2 text-white">Time In</th>
+                      <th className="border px-4 py-2 text-white">NO</th>
+                      <th className="border px-4 py-2 text-white">TIME IN</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -253,8 +253,8 @@ const UserEdit = () => {
                 <table className="table-auto w-full">
                   <thead>
                     <tr>
-                      <th className="border px-4 py-2 text-white">No</th>
-                      <th className="border px-4 py-2 text-white">Time Out</th>
+                      <th className="border px-4 py-2 text-white">NO</th>
+                      <th className="border px-4 py-2 text-white">TIME OUT</th>
                     </tr>
                   </thead>
                   <tbody>

@@ -108,7 +108,7 @@ const Home = () => {
             {filter ? <div></div> : <>
               <div className='flex items-center bg-white justify-around pt-2 shadow-md rounded-xl p-2'>
                 <div >
-                  <label htmlFor="sport" className="flex text-gray-500 text-sm font-bold mb-2">SPORT</label>
+                  <label htmlFor="sport" className="flex text-gray-500 text-xs font-bold mb-1">SPORT</label>
                   <select
                     id="sport"
                     name="sport"
@@ -123,7 +123,7 @@ const Home = () => {
                   </select>
                 </div>
                 <div>
-                  <label htmlFor="level" className="flex text-gray-500  text-sm font-bold mb-2">LEVEL</label>
+                  <label htmlFor="level" className="flex text-gray-500  text-xs font-bold mb-1">LEVEL</label>
                   <select
                     id="level"
                     name="level"
@@ -139,7 +139,7 @@ const Home = () => {
                   </select>
                 </div>
                 <div>
-                  <label htmlFor="sex" className="block text-gray-500 text-sm font-bold mb-2">SEX</label>
+                  <label htmlFor="sex" className="block text-gray-500 text-xs font-bold mb-1">SEX</label>
                   <select
                     id="sex"
                     name="sex"
@@ -153,7 +153,7 @@ const Home = () => {
                   </select>
                 </div>
                 <div>
-                  <label htmlFor="status" className="block text-gray-500 text-sm font-bold mb-2">STATUS</label>
+                  <label htmlFor="status" className="block text-gray-500 text-xs font-bold mb-1">STATUS</label>
                   <select
                     id="status"
                     name="status"
@@ -180,18 +180,18 @@ const Home = () => {
                 <>
                   {searchInput ?
                     <div>
-                      <h1 className="text-2xl font-bold mb-4  text-white">ALL</h1>
-                      <table className="table-auto w-full">
+                      <h1 className="text-2xl font-bold pt-2 mb-4 text-center text-white">ALL</h1>
+                      <table className="table-auto">
                         <thead>
                           <tr>
-                            <th className="border p-1 text-white">NO</th>
-                            <th className="border p-1 text-white">NAME</th>
-                            <th className="border p-1 text-white">STATUS</th>
-                            <th className="border p-1 text-white">EDIT</th>
+                            <th className="border px-2 py-1 w-fit text-white">NO</th>
+                            <th className="border px-2 py-1 w-full text-white">NAME</th>
+                            <th className="border px-2 py-1 w-fit text-white">STATUS</th>
+                            <th className="border px-2 py-1 w-fit text-white">EDIT</th>
                           </tr>
                         </thead>
                         <tbody>
-                          {filteredSearch.map((filteredAll, index) => (
+                          {filteredSearch.filter(pupil => ((sport === "ALL" ? true : pupil.sport === sport) && (level === "ALL" ? true : pupil.level === level) && (status === "ALL" ? true : pupil.status === status) && (sex === "ALL" ? true : pupil.sex === sex))).map((filteredAll, index) => (
                             <tr key={filteredAll._id} className="text-center">
                               <td className="border p-1 text-white">{index + 1}</td>
                               <td className="border p-1 text-white">{filteredAll.fullName}</td>
@@ -213,14 +213,14 @@ const Home = () => {
                     :
                     <>
                       <div>
-                        <h1 className="text-2xl font-bold mb-4  text-white">ALL</h1>
-                        <table className="table-auto w-full">
+                        <h1 className="text-2xl font-bold pt-2 mb-4 text-center text-white">ALL</h1>
+                        <table className="table-auto">
                           <thead>
                             <tr>
-                              <th className="border p-1 text-white">NO</th>
-                              <th className="border p-1 text-white">NAME</th>
-                              <th className="border p-1 text-white">STATUS</th>
-                              <th className="border p-1 text-white">EDIT</th>
+                              <th className="border px-2 py-1 w-fit text-white">NO</th>
+                              <th className="border px-2 py-1 w-full text-white">NAME</th>
+                              <th className="border px-2 py-1 w-fit text-white">STATUS</th>
+                              <th className="border px-2 py-1 w-fit text-white">EDIT</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -248,15 +248,16 @@ const Home = () => {
                 :
                 <>
                   <div className="grid grid-cols-1 md:grid-cols-2 pt-2 gap-4">
+                  {!males.length ? <></> : <>
                     <div>
-                      <h1 className="text-2xl font-bold mb-4  text-white">MALE</h1>
-                      <table className="table-auto w-full">
+                      <h1 className="text-2xl font-bold mb-4 text-center text-white">MALE</h1>
+                      <table className="table-auto">
                         <thead>
                           <tr>
-                            <th className="border p-1 text-white">NO</th>
-                            <th className="border p-1 text-white">NAME</th>
-                            <th className="border p-1 text-white">STATUS</th>
-                            <th className="border p-1 text-white">EDIT</th>
+                            <th className="border px-2 py-1 w-fit text-white">NO</th>
+                            <th className="border px-2 py-1 w-full text-white">NAME</th>
+                            <th className="border px-2 py-1 w-fit text-white">STATUS</th>
+                            <th className="border px-2 py-1 w-fit text-white">EDIT</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -280,15 +281,18 @@ const Home = () => {
                         </tbody>
                       </table>
                     </div>
+                    </>}
+                    {console.log(females)}
+                    {!females.length ? <div></div> : <>
                     <div>
-                      <h1 className="text-2xl font-bold mb-4 text-white">FEMALE</h1>
-                      <table className="table-auto w-full">
+                      <h1 className="text-2xl font-bold mb-4 text-center text-white">FEMALE</h1>
+                      <table className="table-auto ">
                         <thead>
                           <tr>
-                            <th className="border p-1 text-white">NO</th>
-                            <th className="border p-1 text-white">NAME</th>
-                            <th className="border p-1 text-white">STATUS</th>
-                            <th className="border p-1 text-white">EDIT</th>
+                            <th className="border px-2 py-1 w-fit text-white">NO</th>
+                            <th className="border px-2 py-1 w-full text-white">NAME</th>
+                            <th className="border px-2 py-1 w-fit text-white">STATUS</th>
+                            <th className="border px-2 py-1 w-fit text-white">EDIT</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -312,6 +316,7 @@ const Home = () => {
                         </tbody>
                       </table>
                     </div>
+                    </>}
                   </div>
                 </>}
             </>
@@ -321,17 +326,17 @@ const Home = () => {
                 <>
                   {searchInput ?
                     <div>
-                      <h1 className="text-2xl font-bold mb-4  text-white">ALL</h1>
-                      <table className="table-auto w-full">
+                      <h1 className="text-2xl font-bold pt-2 mb-4 text-center text-white">ALL</h1>
+                      <table className="table-auto">
                         <thead>
                           <tr>
-                            <th className="border p-1 text-white">NO</th>
-                            <th className="border p-1 text-white">NAME</th>
-                            <th className="border p-1 text-white">STATUS</th>
+                            <th className="border px-2 py-1 w-fit text-white">NO</th>
+                            <th className="border px-2 py-1 w-full text-white">NAME</th>
+                            <th className="border px-2 py-1 w-fit text-white">STATUS</th>
                           </tr>
                         </thead>
                         <tbody>
-                          {filteredSearch.map((filteredAll, index) => (
+                          {filteredSearch.filter(pupil => ((sport === "ALL" ? true : pupil.sport === sport) && (level === "ALL" ? true : pupil.level === level) && (status === "ALL" ? true : pupil.status === status) && (sex === "ALL" ? true : pupil.sex === sex))).map((filteredAll, index) => (
                             <tr key={filteredAll._id} className="text-center">
                               <td className="border p-1 text-white">{index + 1}</td>
                               <td className="border p-1 text-white">{filteredAll.fullName}</td>
@@ -349,13 +354,13 @@ const Home = () => {
                     :
                     <>
                       <div>
-                        <h1 className="text-2xl font-bold mb-4  text-white">ALL</h1>
-                        <table className="table-auto w-full">
+                        <h1 className="text-2xl font-bold pt-2 mb-4 text-center text-white">ALL</h1>
+                        <table className="table-auto ">
                           <thead>
                             <tr>
-                              <th className="border p-1 text-white">NO</th>
-                              <th className="border p-1 text-white">NAME</th>
-                              <th className="border p-1 text-white">STATUS</th>
+                              <th className="border px-2 py-1 w-fit text-white">NO</th>
+                              <th className="border px-2 py-1 w-full text-white">NAME</th>
+                              <th className="border px-2 py-1 w-fit text-white">STATUS</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -379,15 +384,15 @@ const Home = () => {
                 :
                 <>
                   <div className="grid grid-cols-1 md:grid-cols-2 pt-2 gap-4">
-
+                  {!males.length ? <div></div> : <>
                     <div>
-                      <h1 className="text-2xl font-bold mb-4  text-white">MALE</h1>
-                      <table className="table-auto w-full">
+                      <h1 className="text-2xl font-bold mb-4 text-center text-white">MALE</h1>
+                      <table className="table-auto ">
                         <thead>
                           <tr>
-                            <th className="border p-1 text-white">NO</th>
-                            <th className="border p-1 text-white">NAME</th>
-                            <th className="border p-1 text-white">STATUS</th>
+                            <th className="border px-2 py-1 w-fit text-white">NO</th>
+                            <th className="border px-2 py-1 w-full text-white">NAME</th>
+                            <th className="border px-2 py-1 w-fit text-white">STATUS</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -406,14 +411,16 @@ const Home = () => {
                         </tbody>
                       </table>
                     </div>
+                    </>}
+                    {!females.length ? <div></div> : <>
                     <div>
-                      <h1 className="text-2xl font-bold mb-4 text-white">FEMALE</h1>
-                      <table className="table-auto w-full">
+                      <h1 className="text-2xl font-bold mb-4 text-center text-white">FEMALE</h1>
+                      <table className="table-auto">
                         <thead>
                           <tr>
-                            <th className="border p-1 text-white">NO</th>
-                            <th className="border p-1 text-white">NAME</th>
-                            <th className="border p-1 text-white">STATUS</th>
+                            <th className="border px-2 py-1 w-fit text-white">NO</th>
+                            <th className="border px-2 py-1 w-full text-white">NAME</th>
+                            <th className="border px-2 py-1 w-fit text-white">STATUS</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -433,6 +440,7 @@ const Home = () => {
                         </tbody>
                       </table>
                     </div>
+                    </>}
                   </div>
                 </>}
             </>
