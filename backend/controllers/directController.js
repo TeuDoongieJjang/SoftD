@@ -175,15 +175,15 @@ export const ioOp = async (req, res) => {
     if (!studentsTime) {
       studentsTime = new StudentTime({
         studentId: id,
-        timeIn: action === "in" ? [new Date().toISOString()] : [],
-        timeOut: action === "out" ? [new Date().toISOString()] : [],
+        timeIn: action === "in" ? [new Date().toLocaleString()] : [],
+        timeOut: action === "out" ? [new Date().toLocaleString()] : [],
       });
       await studentsTime.save();
     } else {
       if (action === "in") {
-        studentsTime.timeIn.push(new Date().toISOString());
+        studentsTime.timeIn.push(new Date().toLocaleString());
       } else if (action === "out") {
-        studentsTime.timeOut.push(new Date().toISOString());
+        studentsTime.timeOut.push(new Date().toLocaleString());
       }
       await studentsTime.save();
     }
