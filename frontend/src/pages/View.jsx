@@ -40,8 +40,8 @@ const View = () => {
             setEmail(res.data.studentData.email)
             setBirthdate(res.data.studentData.birthdate)
             setLoading(false)
-          } 
-          if(res.data.studentData && res.data.studentTimeIn && res.data.studentTimeOut ){
+          }
+          if (res.data.studentData && res.data.studentTimeIn && res.data.studentTimeOut) {
             setName(res.data.studentData.fullName)
             setSport(res.data.studentData.sport)
             setSex(res.data.studentData.sex)
@@ -51,7 +51,7 @@ const View = () => {
             setTimeIn(res.data.studentTimeIn)
             setTimeOut(res.data.studentTimeOut)
             setLoading(false)
-          } 
+          }
         }
 
       } catch (error) {
@@ -119,46 +119,56 @@ const View = () => {
               </div>
             </div>
             <div className="grid grid-cols-1 pt-4 md:grid-cols-2 gap-4">
-              <div className="mb-4">
-                <table className="table-auto w-full">
-                  <thead>
-                    <tr>
-                      <th className="border px-4 py-2 text-white">NO</th>
-                      <th className="border px-4 py-2 text-white">TIME IN</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {timeIn.map((time, index) => (
-                      <tr key={`time-${index}`} className="text-center">
-                        <td className="border px-4 py-2 text-white">{index + 1}</td>
-                        <td className="border px-4 py-2 text-white">{time}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              <div>
-                <table className="table-auto w-full">
-                  <thead>
-                    <tr>
-                      <th className="border px-4 py-2 text-white">NO</th>
-                      <th className="border px-4 py-2 text-white">TIME OUT</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {timeOut.map((time, index) => (
-                      <tr key={`time-${index}`} className="text-center">
-                        <td className="border px-4 py-2 text-white">{index + 1}</td>
-                        <td className="border px-4 py-2 text-white">{time}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+              {!timeIn.length ? <></> : <>
+                <div className="mb-1 md:mb-4 p-3 h-fit rounded-xl border bg-white border-white shadow-md">
+                  <h1 className="text-2xl font-bold pt-1 mb-4 text-center text-black">TIME IN</h1>
+                  <div className="rounded-xl border border-white overflow-hidden shadow-md">
+                    <table className="bg-gray-800 table-auto border w-full">
+                      <thead>
+                        <tr>
+                          <th className="border px-2 py-1 w-fit text-white">NO</th>
+                          <th className="border px-2 py-1 w-full text-white">DATE TIME</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {timeIn.map((time, index) => (
+                          <tr key={`time-${index}`} className="text-center">
+                            <td className="border px-2 py-1 text-white">{index + 1}</td>
+                            <td className="border px-2 py-1 text-white">{time}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </>}
+              {!timeOut.length ? <></> : <>
+                <div className="mb-4 p-3 h-fit rounded-xl border bg-white border-white shadow-md">
+                  <h1 className="text-2xl font-bold pt-1 mb-4 text-center text-black">TIME OUT</h1>
+                  <div className="rounded-xl border border-white overflow-hidden shadow-md">
+                    <table className="bg-gray-800 table-auto border w-full">
+                      <thead>
+                        <tr>
+                          <th className="border px-2 py-1 w-fit text-white">NO</th>
+                          <th className="border px-2 py-1 w-full text-white">DATE TIME</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {timeOut.map((time, index) => (
+                          <tr key={`time-${index}`} className="text-center">
+                            <td className="border px-2 py-1 text-white">{index + 1}</td>
+                            <td className="border px-2 py-1 text-white">{time}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </>}
             </div>
           </div>
         </main>
-        <footer className="bg-gray-200 text-center rounded-t-xl py-2">
+        <footer className="bg-white text-center rounded-t-xl py-2">
           <label className='text-xl text'>BY RTU/CEIT-03-402P</label>
         </footer>
       </>}

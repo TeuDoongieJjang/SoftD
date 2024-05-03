@@ -87,8 +87,8 @@ const Home = () => {
             <button className="btn btn-primary text-black bg-yellow-500 hover:bg-blue-500  hover:text-gray-500" onClick={() => { navigate(`/api/user/edit/${authUser.id}`) }}>EDIT</button>
           </div>
         </header>
-        <main className="flex-grow p-4 ">
-          <div className='flex flex-col'>
+        <main className="flex-grow p-4">
+          <div className='flex flex-col '>
             <div className='flex justify-between'>
               {filter ? <div></div> : <>
                 <input
@@ -172,70 +172,38 @@ const Home = () => {
             </>}
           </div>
           {email === '2022-111922@rtu.edu.ph' ||
-           email === '2022-103284@rtu.edu.ph' ||
-           email === '2022-103137@rtu.edu.ph' ||
-           email === '2021-109061@rtu.edu.ph' ||
-           email === '2022-103325@rtu.edu.ph' ?
+            email === '2022-103284@rtu.edu.ph' ||
+            email === '2022-103137@rtu.edu.ph' ||
+            email === '2021-109061@rtu.edu.ph' ||
+            email === '2022-103325@rtu.edu.ph' ?
             <>
               {!filter ?
                 <>
                   {searchInput ?
-                    <div>
-                      <h1 className="text-2xl font-bold pt-2 mb-4 text-center text-white">ALL</h1>
-                      <table className="table-auto">
-                        <thead>
-                          <tr>
-                            <th className="border px-2 py-1 w-fit text-white">NO</th>
-                            <th className="border px-2 py-1 w-full text-white">NAME</th>
-                            <th className="border px-2 py-1 w-fit text-white">STATUS</th>
-                            <th className="border px-2 py-1 w-fit text-white">EDIT</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {filteredSearch.filter(pupil => ((sport === "ALL" ? true : pupil.sport === sport) && (level === "ALL" ? true : pupil.level === level) && (status === "ALL" ? true : pupil.status === status) && (sex === "ALL" ? true : pupil.sex === sex))).map((filteredAll, index) => (
-                            <tr key={filteredAll._id} className="text-center">
-                              <td className="border p-1 text-white">{index + 1}</td>
-                              <td className="border p-1 text-white">{filteredAll.fullName}</td>
-                              <td >
-                                <button onClick={() => navigate(`/api/view/${filteredAll._id}`)} className="btn btn-primary bg-yellow-500 text-black hover:bg-gray-800 hover:text-gray-500">
-                                  {filteredAll.status}
-                                </button>
-                              </td>
-                              <td >
-                                <button onClick={() => navigate(`/api/delete/${filteredAll._id}`)} className="btn btn-primary bg-yellow-500 text-black hover:bg-gray-800 hover:text-gray-500">
-                                  DELETE
-                                </button>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                    :
-                    <>
-                      <div>
-                        <h1 className="text-2xl font-bold pt-2 mb-4 text-center text-white">ALL</h1>
-                        <table className="table-auto">
+                    <div className="bg-white rounded-xl shadow-md p-2 px-3 pb-3 mt-4">
+                      <h1 className="text-2xl font-bold pt-1 mb-3 text-center text-black">ALL</h1>
+                      <div className="rounded-xl border border-white overflow-hidden shadow-md">
+                        <table className="bg-gray-800 table-auto border">
                           <thead>
                             <tr>
                               <th className="border px-2 py-1 w-fit text-white">NO</th>
                               <th className="border px-2 py-1 w-full text-white">NAME</th>
-                              <th className="border px-2 py-1 w-fit text-white">STATUS</th>
-                              <th className="border px-2 py-1 w-fit text-white">EDIT</th>
+                              <th className="border border-b-gray-800 border-t-white-800 px-2 py-1 w-fit text-white ">STATUS</th>
+                              <th className="px-2 py-1 w-fit text-white ">EDIT</th>
                             </tr>
                           </thead>
                           <tbody>
-                            {students.filter(pupil => ((sport === "ALL" ? true : pupil.sport === sport) && (level === "ALL" ? true : pupil.level === level) && (status === "ALL" ? true : pupil.status === status) && (sex === "ALL" ? true : pupil.sex === sex))).map((filteredPupil, index) => (
-                              <tr key={filteredPupil._id} className="text-center">
+                            {filteredSearch.filter(pupil => ((sport === "ALL" ? true : pupil.sport === sport) && (level === "ALL" ? true : pupil.level === level) && (status === "ALL" ? true : pupil.status === status) && (sex === "ALL" ? true : pupil.sex === sex))).map((filteredAll, index) => (
+                              <tr key={filteredAll._id} className="text-center">
                                 <td className="border p-1 text-white">{index + 1}</td>
-                                <td className="border p-1 text-white">{filteredPupil.fullName}</td>
+                                <td className="border p-1 text-sm text-white">{filteredAll.fullName}</td>
                                 <td >
-                                  <button onClick={() => navigate(`/api/view/${filteredPupil._id}`)} className="btn btn-primary bg-yellow-500 text-black hover:bg-gray-800 hover:text-gray-500">
-                                    {filteredPupil.status}
+                                  <button onClick={() => navigate(`/api/view/${filteredAll._id}`)} className="btn btn-primary bg-yellow-500 text-black hover:bg-gray-800 hover:text-gray-500">
+                                    {filteredAll.status}
                                   </button>
                                 </td>
                                 <td >
-                                  <button onClick={() => navigate(`/api/delete/${students._id}`)} className="btn btn-primary bg-yellow-500 text-black hover:bg-gray-800 hover:text-gray-500">
+                                  <button onClick={() => navigate(`/api/delete/${filteredAll._id}`)} className="btn btn-primary bg-yellow-500 text-black hover:bg-gray-800 hover:text-gray-500">
                                     DELETE
                                   </button>
                                 </td>
@@ -244,79 +212,117 @@ const Home = () => {
                           </tbody>
                         </table>
                       </div>
+                    </div>
+                    :
+                    <>
+                      <div className="bg-white rounded-xl shadow-md p-2 px-3 pb-3 mt-4">
+                        <h1 className="text-2xl font-bold pt-1 mb-3 text-center text-black">ALL</h1>
+                        <div className="rounded-xl border border-white overflow-hidden shadow-md">
+                          <table className="bg-gray-800 table-auto border">
+                            <thead>
+                              <tr>
+                                <th className="border px-2 py-1 w-fit text-white">NO</th>
+                                <th className="border px-2 py-1 w-full text-white">NAME</th>
+                                <th className="border border-b-gray-800 px-2 py-1 w-fit text-white">STATUS</th>
+                                <th className="px-2 py-1 w-fit text-white">EDIT</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {students.filter(pupil => ((sport === "ALL" ? true : pupil.sport === sport) && (level === "ALL" ? true : pupil.level === level) && (status === "ALL" ? true : pupil.status === status) && (sex === "ALL" ? true : pupil.sex === sex))).map((filteredPupil, index) => (
+                                <tr key={filteredPupil._id} className="text-center">
+                                  <td className="border p-1 text-white">{index + 1}</td>
+                                  <td className="border p-1 text-sm text-white">{filteredPupil.fullName}</td>
+                                  <td >
+                                    <button onClick={() => navigate(`/api/view/${filteredPupil._id}`)} className="btn btn-primary bg-yellow-500 text-black hover:bg-gray-800 hover:text-gray-500">
+                                      {filteredPupil.status}
+                                    </button>
+                                  </td>
+                                  <td >
+                                    <button onClick={() => navigate(`/api/delete/${students._id}`)} className="btn btn-primary bg-yellow-500 text-black hover:bg-gray-800 hover:text-gray-500">
+                                      DELETE
+                                    </button>
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
                     </>}
                 </>
                 :
                 <>
                   <div className="grid grid-cols-1 md:grid-cols-2 pt-2 gap-4">
-                  {!males.length ? <></> : <>
-                    <div>
-                      <h1 className="text-2xl font-bold mb-4 text-center text-white">MALE</h1>
-                      <table className="table-auto">
-                        <thead>
-                          <tr>
-                            <th className="border px-2 py-1 w-fit text-white">NO</th>
-                            <th className="border px-2 py-1 w-full text-white">NAME</th>
-                            <th className="border px-2 py-1 w-fit text-white">STATUS</th>
-                            <th className="border px-2 py-1 w-fit text-white">EDIT</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {males.map((male, index) => (
-                            <tr key={male._id} className="text-center">
-                              <td className="border p-1 text-white">{index + 1}</td>
-                              <td className="border p-1 text-white">{male.fullName}</td>
-                              <td>
-                                <button onClick={() => navigate(`/api/view/${male._id}`)} className="btn btn-primary bg-yellow-500 text-black hover:bg-gray-800 hover:text-gray-500">
-                                  {male.status}
-                                </button>
-
-                              </td>
-                              <td>
-                                <button onClick={() => navigate(`/api/delete/${male._id}`)} className="btn btn-primary bg-yellow-500 text-black hover:bg-gray-800 hover:text-gray-500">
-                                  DELETE
-                                </button>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
+                    {!males.length ? <></> : <>
+                      <div className="bg-white rounded-xl h-fit shadow-md p-2 px-3 pb-3 mt-4">
+                        <h1 className="text-2xl font-bold pt-1 mb-4 text-center text-black">MALE</h1>
+                        <div className="rounded-xl border border-white overflow-hidden shadow-md">
+                          <table className="bg-gray-800 table-auto border">
+                            <thead>
+                              <tr>
+                                <th className="border px-2 py-1 w-fit text-white">NO</th>
+                                <th className="border px-2 py-1 w-full text-white">NAME</th>
+                                <th className="border border-b-gray-800 px-2 py-1 w-fit text-white">STATUS</th>
+                                <th className="px-2 py-1 w-fit text-white">EDIT</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {males.map((male, index) => (
+                                <tr key={male._id} className="text-center">
+                                  <td className="border p-1 text-white">{index + 1}</td>
+                                  <td className="border p-1 text-sm text-white">{male.fullName}</td>
+                                  <td>
+                                    <button onClick={() => navigate(`/api/view/${male._id}`)} className="btn btn-primary bg-yellow-500 text-black hover:bg-gray-800 hover:text-gray-500">
+                                      {male.status}
+                                    </button>
+                                  </td>
+                                  <td>
+                                    <button onClick={() => navigate(`/api/delete/${male._id}`)} className="btn btn-primary bg-yellow-500 text-black hover:bg-gray-800 hover:text-gray-500">
+                                      DELETE
+                                    </button>
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
                     </>}
                     {console.log(females)}
                     {!females.length ? <div></div> : <>
-                    <div>
-                      <h1 className="text-2xl font-bold mb-4 text-center text-white">FEMALE</h1>
-                      <table className="table-auto ">
-                        <thead>
-                          <tr>
-                            <th className="border px-2 py-1 w-fit text-white">NO</th>
-                            <th className="border px-2 py-1 w-full text-white">NAME</th>
-                            <th className="border px-2 py-1 w-fit text-white">STATUS</th>
-                            <th className="border px-2 py-1 w-fit text-white">EDIT</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {females.map((female, index) => (
-                            <tr key={female._id} className="text-center">
-                              <td className="border p-1 text-white">{index + 1}</td>
-                              <td className="border p-1 text-white">{female.fullName}</td>
-                              <td>
-                                <button onClick={() => navigate(`/api/view/${female._id}`)} className="btn btn-primary bg-yellow-500 text-black hover:bg-gray-800 hover:text-gray-500">
-                                  {female.status}
-                                </button>
-
-                              </td>
-                              <td>
-                                <button onClick={() => navigate(`/api/delete/${female._id}`)} className="btn btn-primary bg-yellow-500 text-black hover:bg-gray-800 hover:text-gray-500">
-                                  DELETE
-                                </button>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
+                      <div className="bg-white rounded-xl h-fit shadow-md p-2 px-3 pb-3 mt-0 md:mt-4">
+                        <h1 className="text-2xl font-bold pt-1 mb-4 text-center text-black">FEMALE</h1>
+                        <div className="rounded-xl border border-white overflow-hidden shadow-md">
+                          <table className="bg-gray-800 table-auto border">
+                            <thead>
+                              <tr>
+                                <th className="border px-2 py-1 w-fit text-white ">NO</th>
+                                <th className="border px-2 py-1 w-full text-white ">NAME</th>
+                                <th className="border px-2 py-1 w-fit text-white border-b-gray-800 ">STATUS</th>
+                                <th className="px-2 py-1 w-fit text-white ">EDIT</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {females.map((female, index) => (
+                                <tr key={female._id} className="text-center">
+                                  <td className="border p-1 text-white">{index + 1}</td>
+                                  <td className="border p-1 text-sm text-white">{female.fullName}</td>
+                                  <td>
+                                    <button onClick={() => navigate(`/api/view/${female._id}`)} className="btn btn-primary bg-yellow-500 text-black hover:bg-gray-800 hover:text-gray-500">
+                                      {female.status}
+                                    </button>
+                                  </td>
+                                  <td>
+                                    <button onClick={() => navigate(`/api/delete/${female._id}`)} className="btn btn-primary bg-yellow-500 text-black hover:bg-gray-800 hover:text-gray-500">
+                                      DELETE
+                                    </button>
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
                     </>}
                   </div>
                 </>}
@@ -326,134 +332,136 @@ const Home = () => {
               {!filter ?
                 <>
                   {searchInput ?
-                    <div>
-                      <h1 className="text-2xl font-bold pt-2 mb-4 text-center text-white">ALL</h1>
-                      <table className="table-auto">
-                        <thead>
-                          <tr>
-                            <th className="border px-2 py-1 w-fit text-white">NO</th>
-                            <th className="border px-2 py-1 w-full text-white">NAME</th>
-                            <th className="border px-2 py-1 w-fit text-white">STATUS</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {filteredSearch.filter(pupil => ((sport === "ALL" ? true : pupil.sport === sport) && (level === "ALL" ? true : pupil.level === level) && (status === "ALL" ? true : pupil.status === status) && (sex === "ALL" ? true : pupil.sex === sex))).map((filteredAll, index) => (
-                            <tr key={filteredAll._id} className="text-center">
-                              <td className="border p-1 text-white">{index + 1}</td>
-                              <td className="border p-1 text-white">{filteredAll.fullName}</td>
-                              <td >
-                                <button onClick={() => navigate(`/api/view/${filteredAll._id}`)} className="btn btn-primary bg-yellow-500 text-black hover:bg-gray-800 hover:text-gray-500">
-                                  {filteredAll.status}
-                                </button>
-                              </td>
-
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                    :
-                    <>
-                      <div>
-                        <h1 className="text-2xl font-bold pt-2 mb-4 text-center text-white">ALL</h1>
-                        <table className="table-auto ">
+                    <div className="bg-white rounded-xl shadow-md p-2 px-3 pb-3 mt-4">
+                      <h1 className="text-2xl font-bold pt-1 mb-3 text-center text-black">ALL</h1>
+                      <div className="rounded-xl border border-white overflow-hidden shadow-md">
+                        <table className="bg-gray-800 table-auto border">
                           <thead>
                             <tr>
                               <th className="border px-2 py-1 w-fit text-white">NO</th>
                               <th className="border px-2 py-1 w-full text-white">NAME</th>
-                              <th className="border px-2 py-1 w-fit text-white">STATUS</th>
+                              <th className="border border-b-gray-800 px-2 py-1 w-fit text-white">STATUS</th>
                             </tr>
                           </thead>
                           <tbody>
-                            {students.filter(pupil => ((sport === "ALL" ? true : pupil.sport === sport) && (level === "ALL" ? true : pupil.level === level) && (status === "ALL" ? true : pupil.status === status) && (sex === "ALL" ? true : pupil.sex === sex))).map((filteredPupil, index) => (
-                              <tr key={filteredPupil._id} className="text-center">
+                            {filteredSearch.filter(pupil => ((sport === "ALL" ? true : pupil.sport === sport) && (level === "ALL" ? true : pupil.level === level) && (status === "ALL" ? true : pupil.status === status) && (sex === "ALL" ? true : pupil.sex === sex))).map((filteredAll, index) => (
+                              <tr key={filteredAll._id} className="text-center">
                                 <td className="border p-1 text-white">{index + 1}</td>
-                                <td className="border p-1 text-white">{filteredPupil.fullName}</td>
+                                <td className="border p-1 text-sm text-white">{filteredAll.fullName}</td>
                                 <td >
-                                  <button onClick={() => navigate(`/api/view/${filteredPupil._id}`)} className="btn btn-primary bg-yellow-500 text-black hover:bg-gray-800 hover:text-gray-500">
-                                    {filteredPupil.status}
+                                  <button onClick={() => navigate(`/api/view/${filteredAll._id}`)} className="btn btn-primary bg-yellow-500 text-black hover:bg-gray-800 hover:text-gray-500">
+                                    {filteredAll.status}
                                   </button>
                                 </td>
-
                               </tr>
                             ))}
                           </tbody>
                         </table>
+                      </div>
+                    </div>
+                    :
+                    <>
+                      <div className="bg-white rounded-xl shadow-md p-2 px-3 pb-3 mt-4">
+                        <h1 className="text-2xl font-bold pt-1 mb-3 text-center text-black">ALL</h1>
+                        <div className="rounded-xl border border-white overflow-hidden shadow-md">
+                          <table className="bg-gray-800 table-auto border ">
+                            <thead>
+                              <tr>
+                                <th className="border px-2 py-1 w-fit text-white">NO</th>
+                                <th className="border px-2 py-1 w-full text-white">NAME</th>
+                                <th className="border border-b-gray-800 px-2 py-1 w-fit text-white">STATUS</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {students.filter(pupil => ((sport === "ALL" ? true : pupil.sport === sport) && (level === "ALL" ? true : pupil.level === level) && (status === "ALL" ? true : pupil.status === status) && (sex === "ALL" ? true : pupil.sex === sex))).map((filteredPupil, index) => (
+                                <tr key={filteredPupil._id} className="text-center">
+                                  <td className="border p-1 text-white">{index + 1}</td>
+                                  <td className="border p-1 text-sm text-white">{filteredPupil.fullName}</td>
+                                  <td >
+                                    <button onClick={() => navigate(`/api/view/${filteredPupil._id}`)} className="btn btn-primary bg-yellow-500 text-black hover:bg-gray-800 hover:text-gray-500">
+                                      {filteredPupil.status}
+                                    </button>
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
                       </div>
                     </>}
                 </>
                 :
                 <>
                   <div className="grid grid-cols-1 md:grid-cols-2 pt-2 gap-4">
-                  {!males.length ? <div></div> : <>
-                    <div>
-                      <h1 className="text-2xl font-bold mb-4 text-center text-white">MALE</h1>
-                      <table className="table-auto ">
-                        <thead>
-                          <tr>
-                            <th className="border px-2 py-1 w-fit text-white">NO</th>
-                            <th className="border px-2 py-1 w-full text-white">NAME</th>
-                            <th className="border px-2 py-1 w-fit text-white">STATUS</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {males.map((male, index) => (
-                            <tr key={male._id} className="text-center">
-                              <td className="border p-1 text-white">{index + 1}</td>
-                              <td className="border p-1 text-white">{male.fullName}</td>
-                              <td>
-                                <button onClick={() => navigate(`/api/view/${male._id}`)} className="btn btn-primary bg-yellow-500 text-black hover:bg-gray-800 hover:text-gray-500">
-                                  {male.status}
-                                </button>
-                              </td>
-
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
+                    {!males.length ? <div></div> : <>
+                      <div className="bg-white rounded-xl h-fit shadow-md p-2 px-3 pb-3 mt-4">
+                        <h1 className="text-2xl font-bold pt-1 mb-4 text-center text-black">MALE</h1>
+                        <div className="rounded-xl border border-white overflow-hidden shadow-md">
+                          <table className="bg-gray-800 table-auto border">
+                            <thead>
+                              <tr>
+                                <th className="border px-2 py-1 w-fit text-white">NO</th>
+                                <th className="border px-2 py-1 w-full text-white">NAME</th>
+                                <th className="border border-b-gray-800 px-2 py-1 w-fit text-white">STATUS</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {males.map((male, index) => (
+                                <tr key={male._id} className="text-center">
+                                  <td className="border p-1 text-white">{index + 1}</td>
+                                  <td className="border p-1 text-sm text-white">{male.fullName}</td>
+                                  <td>
+                                    <button onClick={() => navigate(`/api/view/${male._id}`)} className="btn btn-primary bg-yellow-500 text-black hover:bg-gray-800 hover:text-gray-500">
+                                      {male.status}
+                                    </button>
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
                     </>}
                     {!females.length ? <div></div> : <>
-                    <div>
-                      <h1 className="text-2xl font-bold mb-4 text-center text-white">FEMALE</h1>
-                      <table className="table-auto">
-                        <thead>
-                          <tr>
-                            <th className="border px-2 py-1 w-fit text-white">NO</th>
-                            <th className="border px-2 py-1 w-full text-white">NAME</th>
-                            <th className="border px-2 py-1 w-fit text-white">STATUS</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {females.map((female, index) => (
-                            <tr key={female._id} className="text-center">
-                              <td className="border p-1 text-white">{index + 1}</td>
-                              <td className="border p-1 text-white">{female.fullName}</td>
-                              <td>
-                                <button onClick={() => navigate(`/api/view/${female._id}`)} className="btn btn-primary bg-yellow-500 text-black hover:bg-gray-800 hover:text-gray-500">
-                                  {female.status}
-                                </button>
-
-                              </td>
-
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
+                      <div className="bg-white rounded-xl h-fit shadow-md p-2 px-3 pb-3 mt-0 md:mt-4 ">
+                        <h1 className="text-2xl font-bold pt-1 mb-4 text-center text-black">FEMALE</h1>
+                        <div className="rounded-xl border border-white overflow-hidden shadow-md">
+                          <table className="bg-gray-800 table-auto border">
+                            <thead>
+                              <tr>
+                                <th className="border px-2 py-1 w-fit text-white">NO</th>
+                                <th className="border px-2 py-1 w-full text-white">NAME</th>
+                                <th className="border border-b-gray-800 px-2 py-1 w-fit text-white">STATUS</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {females.map((female, index) => (
+                                <tr key={female._id} className="text-center">
+                                  <td className="border p-1 text-white">{index + 1}</td>
+                                  <td className="border p-1 text-sm text-white">{female.fullName}</td>
+                                  <td>
+                                    <button onClick={() => navigate(`/api/view/${female._id}`)} className="btn btn-primary bg-yellow-500 text-black hover:bg-gray-800 hover:text-gray-500">
+                                      {female.status}
+                                    </button>
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
                     </>}
                   </div>
                 </>}
             </>
           }
         </main>
-        <footer className="bg-gray-200 text-center py-2 rounded-t-xl">
+        <footer className="bg-white text-center py-2 rounded-t-xl">
           <label className='text-xl text'>BY RTU/CEIT-03-402P</label>
         </footer>
       </>
       }
     </div>
-
   )
 }
 

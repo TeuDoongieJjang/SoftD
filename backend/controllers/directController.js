@@ -172,18 +172,35 @@ export const ioOp = async (req, res) => {
 
     let studentsTime = await StudentTime.findOne({ studentId: id });
 
+    const now = new Date();
+
+    const options = {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true
+    };
+
+    const formattedDate = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'Asia/Manila',
+    ...options
+    }).format(now);
+
     if (!studentsTime) {
       studentsTime = new StudentTime({
         studentId: id,
-        timeIn: action === "in" ? [new Date().toLocaleString()] : [],
-        timeOut: action === "out" ? [new Date().toLocaleString()] : [],
+        timeIn: action === "in" ? [formattedDate] : [],
+        timeOut: action === "out" ? [formattedDate] : [],
       });
       await studentsTime.save();
     } else {
       if (action === "in") {
-        studentsTime.timeIn.push(new Date().toLocaleString());
+        studentsTime.timeIn.push(formattedDate);
       } else if (action === "out") {
-        studentsTime.timeOut.push(new Date().toLocaleString());
+        studentsTime.timeOut.push(formattedDate);
       }
       await studentsTime.save();
     }
@@ -268,18 +285,6 @@ export const view = async (req, res) => {
       });
     }
 
-    const formattedTimesIn = studentTime.timeIn.map((time) => {
-      const date = new Date(time);
-      const formattedTimeIn = format(date, "yyyy-MM-dd HH:mm:ss a");
-      return formattedTimeIn;
-    });
-
-    const formattedTimesOut = studentTime.timeOut.map((time) => {
-      const date = new Date(time);
-      const formattedTimeOut = format(date, "yyyy-MM-dd HH:mm:ss a");
-      return formattedTimeOut;
-    });
-
     return res.status(200).json({
       studentData: {
         id: student._id,
@@ -290,8 +295,8 @@ export const view = async (req, res) => {
         sex: student.sex,
         birthdate: date,
       },
-      studentTimeIn: formattedTimesIn,
-      studentTimeOut: formattedTimesOut,
+      studentTimeIn: studentTime.timeIn,
+      studentTimeOut: studentTime.timeOut,
     });
   } catch (error) {
     return res.status(400).json({ error: `Error in View Controller ${error}` });
@@ -361,23 +366,10 @@ export const userView = async (req, res) => {
       });
     }
 
-    const formattedTimesIn = studentTime.timeIn.map((time) => {
-      const date = new Date(time)
-      const formattedTimeIn = format(date, "yyyy-MM-dd HH:mm:ss a");
-      return formattedTimeIn;
-    });
-
-    const formattedTimesOut = studentTime.timeOut.map((time) => {
-      const date = new Date(time)
-      const formattedTimeOut = format(date, "yyyy-MM-dd HH:mm:ss a");
-      return formattedTimeOut;
-    });
-
-
     return res.status(200).json({
       student: student,
-      studentTimeIn: formattedTimesIn,
-      studentTimeOut: formattedTimesOut,
+      studentTimeIn: studentTime.timeIn,
+      studentTimeOut: studentTime.timeOut,
     });
   } catch (error) {
     return res
