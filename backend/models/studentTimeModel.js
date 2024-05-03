@@ -7,10 +7,10 @@ const studentTimeSchema = mongoose.Schema({
     required: true,
   },
   timeIn: {
-    type: [Date],
+    type: [String],
   },
   timeOut: {
-    type: [Date],
+    type: [String],
   },
 });
 

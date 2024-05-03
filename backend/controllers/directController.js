@@ -175,15 +175,15 @@ export const ioOp = async (req, res) => {
     if (!studentsTime) {
       studentsTime = new StudentTime({
         studentId: id,
-        timeIn: action === "in" ? [new Date()] : [],
-        timeOut: action === "out" ? [new Date()] : [],
+        timeIn: action === "in" ? [new Date().toISOString()] : [],
+        timeOut: action === "out" ? [new Date().toISOString()] : [],
       });
       await studentsTime.save();
     } else {
       if (action === "in") {
-        studentsTime.timeIn.push(new Date());
+        studentsTime.timeIn.push(new Date().toISOString());
       } else if (action === "out") {
-        studentsTime.timeOut.push(new Date());
+        studentsTime.timeOut.push(new Date().toISOString());
       }
       await studentsTime.save();
     }
@@ -269,12 +269,14 @@ export const view = async (req, res) => {
     }
 
     const formattedTimesIn = studentTime.timeIn.map((time) => {
-      const formattedTimeIn = format(time, "yyyy-MM-dd HH:mm:ss a");
+      const date = new Date(time);
+      const formattedTimeIn = format(date, "yyyy-MM-dd HH:mm:ss a");
       return formattedTimeIn;
     });
 
     const formattedTimesOut = studentTime.timeOut.map((time) => {
-      const formattedTimeOut = format(time, "yyyy-MM-dd HH:mm:ss a");
+      const date = new Date(time);
+      const formattedTimeOut = format(date, "yyyy-MM-dd HH:mm:ss a");
       return formattedTimeOut;
     });
 
@@ -360,12 +362,14 @@ export const userView = async (req, res) => {
     }
 
     const formattedTimesIn = studentTime.timeIn.map((time) => {
-      const formattedTimeIn = format(time, "yyyy-MM-dd HH:mm:ss a");
+      const date = new Date(time)
+      const formattedTimeIn = format(date, "yyyy-MM-dd HH:mm:ss a");
       return formattedTimeIn;
     });
 
     const formattedTimesOut = studentTime.timeOut.map((time) => {
-      const formattedTimeOut = format(time, "yyyy-MM-dd HH:mm:ss a");
+      const date = new Date(time)
+      const formattedTimeOut = format(date, "yyyy-MM-dd HH:mm:ss a");
       return formattedTimeOut;
     });
 
