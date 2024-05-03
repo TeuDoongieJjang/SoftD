@@ -269,12 +269,12 @@ export const view = async (req, res) => {
     }
 
     const formattedTimesIn = studentTime.timeIn.map((time) => {
-      const formattedTimeIn = format(time, "yyyy-MM-dd hh:mm:ss a");
+      const formattedTimeIn = format(time, "yyyy-MM-dd HH:mm:ss a");
       return formattedTimeIn;
     });
 
     const formattedTimesOut = studentTime.timeOut.map((time) => {
-      const formattedTimeOut = format(time, "yyyy-MM-dd hh:mm:ss a");
+      const formattedTimeOut = format(time, "yyyy-MM-dd HH:mm:ss a");
       return formattedTimeOut;
     });
 
@@ -360,12 +360,12 @@ export const userView = async (req, res) => {
     }
 
     const formattedTimesIn = studentTime.timeIn.map((time) => {
-      const formattedTimeIn = format(time, "yyyy-MM-dd hh:mm:ss a");
+      const formattedTimeIn = format(time, "yyyy-MM-dd HH:mm:ss a");
       return formattedTimeIn;
     });
 
     const formattedTimesOut = studentTime.timeOut.map((time) => {
-      const formattedTimeOut = format(time, "yyyy-MM-dd hh:mm:ss a");
+      const formattedTimeOut = format(time, "yyyy-MM-dd HH:mm:ss a");
       return formattedTimeOut;
     });
 

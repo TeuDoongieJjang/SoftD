@@ -13,7 +13,7 @@ const studentSchema = new mongoose.Schema({
   sport: {
     type: String,
     required: true,
-    enum: ["BASKETBALL", "VOLLEYBALL", "FOOTBALL"]
+    enum: ["BASKETBALL", "VOLLEYBALL", "FOOTBALL", "OTHERS"]
   },
   sex: {
     type: String,

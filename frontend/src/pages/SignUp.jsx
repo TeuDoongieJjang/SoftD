@@ -92,6 +92,7 @@ const SignUpPage = () => {
                             <option value="BASKETBALL">BASKETBALL</option>
                             <option value="VOLLEYBALL">VOLLEYBALL</option>
                             <option value="FOOTBALL">FOOTBALL</option>
+                            <option value="OTHERS">OTHERS</option>
                         </select>
                     </div>
                     <div>
