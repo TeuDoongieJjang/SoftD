@@ -87,7 +87,7 @@ const Home = () => {
             <button className="btn btn-primary text-black bg-yellow-500 hover:bg-blue-500  hover:text-gray-500" onClick={() => { navigate(`/api/user/edit/${authUser.id}`) }}>EDIT</button>
           </div>
         </header>
-        <main className="flex-grow p-2 pr-1">
+        <main className="flex-grow p-1 overflow-scroll">
           <div className='flex flex-col '>
             <div className='flex justify-between'>
               {filter ? <div></div> : <>
@@ -252,7 +252,7 @@ const Home = () => {
                 </>
                 :
                 <>
-                  <div className="flex flex-row gap-2">
+                  <div className="flex flex-row gap-1">
                     {!males.length ? <></> : <>
                       <div className="bg-white md:p-2 md:px-3 md:pb-3 sm:p-2 sm:px-2 sm:pb-2 flex flex-col flex-grow rounded-xl h-fit shadow-md p-1 px-1 pb-1 mt-3">
                         <h1 className="text-2xl font-bold pt-2 mb-3 text-center text-black">MALE</h1>
@@ -391,7 +391,7 @@ const Home = () => {
                 </>
                 :
                 <>
-                  <div className="flex flex-row pt-1 gap-2">
+                  <div className="flex flex-row pt-1 gap-1">
                     {!males.length ? <div></div> : <>
                       <div className="bg-white md:p-2 md:px-3 md:pb-3 sm:p-2 sm:px-2 sm:pb-2 flex flex-col flex-grow rounded-xl h-fit shadow-md p-1 px-1 pb-1 mt-3">
                         <h1 className="text-2xl font-bold pt-2 mb-3 text-center text-black">MALE</h1>
