@@ -103,7 +103,7 @@ const Home = () => {
                   }}
                 />
               </>}
-              <button onClick={() => filter ? Reset(false) : Reset(true)} className="btn justify-end mt-2 btn-primary text-black bg-yellow-500  hover:bg-gray-800  hover:text-gray-500">FILTER</button>
+              <button onClick={() => filter ? Reset(false) : Reset(true)} className="btn items-end mt-2 btn-primary text-black bg-yellow-500  hover:bg-gray-800  hover:text-gray-500">FILTER</button>
             </div>
             {filter ? <div></div> : <>
               <div className='flex items-center bg-white justify-around pt-2 shadow-md rounded-xl p-2'>
