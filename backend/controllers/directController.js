@@ -67,7 +67,7 @@ export const home = async (req, res) => {
 export const homeEdit = async (req, res) => {
   try {
     const { id } = req.params;
-    await StudentTime.findByIdAndDelete(id)
+    await StudentTime.findByIdAndDelete({ studentId: id })
     await Student.findByIdAndDelete(id)
     
 
