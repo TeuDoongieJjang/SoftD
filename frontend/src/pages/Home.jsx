@@ -103,7 +103,7 @@ const Home = () => {
                   }}
                 />
               </>}
-              <button onClick={() => filter ? Reset(false) : Reset(true)} className="btn btn-primary text-black bg-yellow-500  hover:bg-gray-800  hover:text-gray-500">FILTER</button>
+              <button onClick={() => filter ? Reset(false) : Reset(true)} className="btn justify-end mt-2 btn-primary text-black bg-yellow-500  hover:bg-gray-800  hover:text-gray-500">FILTER</button>
             </div>
             {filter ? <div></div> : <>
               <div className='flex items-center bg-white justify-around pt-2 shadow-md rounded-xl p-2'>
@@ -289,7 +289,7 @@ const Home = () => {
                       </div>
                     </>}
                     {!females.length ? <div></div> : <>
-                      <div className="bg-white md:p-2 md:px-3 md:pb-3 sm:p-2 sm:px-2 sm:pb-2 flex flex-col flex-grow rounded-xl h-fit shadow-md p-1 px-1 pb-1 mt-3">
+                      <div className="bg-white md:p-2 md:px-3 md:pb-3 sm:p-2 sm:px-2 sm:pb-2 flex flex-col flex-grow rounded-xl h-fit shadow-md p-1 px-1 pb-1 mt-3 mr-1">
                         <h1 className="text-2xl font-bold pt-2 mb-3 text-center text-black">FEMALE</h1>
                         <div className="rounded-xl border border-white overflow-hidden shadow-md">
                           <table className="bg-gray-800 table-auto border">
