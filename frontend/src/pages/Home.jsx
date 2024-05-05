@@ -93,7 +93,7 @@ const Home = () => {
               {filter ? <div></div> : <>
                 <input
                   type="text"
-                  className='font-bold  form-control bg-white text-gray-500 text-base px-2 py-1 input input-bordered w-fit max-w-xs'
+                  className='font-bold mt-2 form-control bg-white text-gray-500 text-base px-2 py-1 input input-bordered w-fit max-w-xs'
                   placeholder='SEARCH'
                   value={searchInput}
                   onChange={(e) => {
@@ -103,7 +103,7 @@ const Home = () => {
                   }}
                 />
               </>}
-              <button onClick={() => filter ? Reset(false) : Reset(true)} className="btn items-end mt-2 btn-primary text-black bg-yellow-500  hover:bg-gray-800  hover:text-gray-500">FILTER</button>
+              <button onClick={() => filter ? Reset(false) : Reset(true)} className="btn mt-2 btn-primary text-black bg-yellow-500  hover:bg-gray-800  hover:text-gray-500">FILTER</button>
             </div>
             {filter ? <div></div> : <>
               <div className='flex items-center bg-white justify-around pt-2 shadow-md rounded-xl p-2'>
