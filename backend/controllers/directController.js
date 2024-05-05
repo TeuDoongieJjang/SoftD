@@ -67,8 +67,9 @@ export const home = async (req, res) => {
 export const homeEdit = async (req, res) => {
   try {
     const { id } = req.params;
-    await Student.findByIdAndDelete(id)
     await StudentTime.findByIdAndDelete(id)
+    await Student.findByIdAndDelete(id)
+    
 
     return res.status(200).json({ message: 'Successfully Deleted' })
   } catch (error) {
